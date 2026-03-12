@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Generated static API data (built by scripts/generate-static-data.js)
+public/api/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

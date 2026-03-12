@@ -1,7 +1,16 @@
 const API_BASE = '/api';
 
 async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(`${API_BASE}${url}`);
+  // In production (static Netlify hosting) fetch pre-generated .json files.
+  // In local dev the Vite proxy forwards to the Express server as-is.
+  let resolvedUrl: string;
+  if (import.meta.env.PROD) {
+    const [p, qs] = url.split('?');
+    resolvedUrl = `${API_BASE}${p}.json${qs ? '?' + qs : ''}`;
+  } else {
+    resolvedUrl = `${API_BASE}${url}`;
+  }
+  const res = await fetch(resolvedUrl);
   if (!res.ok) throw new Error(`API error ${res.status}: ${url}`);
   return res.json();
 }
