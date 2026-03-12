@@ -1,0 +1,21 @@
+complaint_id,customer_id,category,location,latitude,longitude,status,timestamp,priority,resolution_time_hours,repeat_complaint
+COMP-001,CUST-1007,Billing Issue,Uptown Heights,40.7589,-73.9851,resolved,2024-01-15T09:30:00Z,medium,24,true
+COMP-002,CUST-1012,Meter Reading Error,Hillside Estate,40.7654,-73.9823,open,2024-01-16T14:20:00Z,high,,false
+COMP-003,CUST-1003,Gas Leak Smell,Industrial Zone A,40.6892,-74.0445,resolved,2024-01-14T11:45:00Z,critical,4,false
+COMP-004,CUST-1016,Low Pressure,Lakeside View,40.7256,-74.0234,in_progress,2024-01-17T08:15:00Z,high,,true
+COMP-005,CUST-1020,No Gas Supply,Mountain View,40.7789,-73.9654,open,2024-01-18T16:30:00Z,critical,,false
+COMP-006,CUST-1001,Billing Dispute,Downtown District,40.7128,-74.0060,resolved,2024-01-13T10:00:00Z,low,48,false
+COMP-007,CUST-1019,Meter Tampering Suspected,Harbor Front,40.7034,-74.0172,investigating,2024-01-17T13:45:00Z,high,,false
+COMP-008,CUST-1005,Pressure Fluctuation,Commercial Center,40.7614,-73.9776,resolved,2024-01-15T15:20:00Z,medium,12,true
+COMP-009,CUST-1025,Gas Odor,University Area,40.7389,-73.9912,resolved,2024-01-14T07:30:00Z,critical,2,false
+COMP-010,CUST-1008,Equipment Noise,North Industrial,40.7831,-73.9712,in_progress,2024-01-16T09:00:00Z,medium,,false
+COMP-011,CUST-1014,Slow Gas Flow,Parkside Homes,40.7356,-73.9905,resolved,2024-01-15T11:10:00Z,low,8,false
+COMP-012,CUST-1004,Meter Offline,Residential Block B,40.7282,-73.9942,open,2024-01-18T10:30:00Z,high,,true
+COMP-013,CUST-1017,Leak Alert,Factory Row,40.6956,-74.0789,resolved,2024-01-13T14:00:00Z,critical,6,false
+COMP-014,CUST-1022,Incorrect Bill,Old Town,40.7201,-74.0023,in_progress,2024-01-17T16:45:00Z,medium,,false
+COMP-015,CUST-1010,Service Interruption,Central Business,40.7580,-73.9855,resolved,2024-01-14T09:15:00Z,high,18,true
+COMP-016,CUST-1009,Gas Quality,South Residential,40.6989,-74.0198,resolved,2024-01-16T11:30:00Z,low,72,false
+COMP-017,CUST-1006,Pressure Issue,Eastside Manor,40.7505,-73.9934,open,2024-01-18T08:00:00Z,medium,,true
+COMP-018,CUST-1015,Meter Replacement,Market District,40.7489,-73.9680,in_progress,2024-01-17T10:20:00Z,low,,false
+COMP-019,CUST-1011,Leak Detection,Riverside Complex,40.7023,-74.0168,resolved,2024-01-15T06:45:00Z,critical,3,false
+COMP-020,CUST-1023,New Connection,New Development,40.7689,-73.9545,resolved,2024-01-16T14:30:00Z,low,120,false

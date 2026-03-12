@@ -1,0 +1,16 @@
+leak_id,pipeline_id,severity,location,latitude,longitude,detected_time,status,estimated_flow_rate,customer_calls,affected_customers,crew_dispatched
+LKS-001,PL-205,critical,Industrial Zone A,40.6892,-74.0445,2024-01-18T06:30:00Z,contained,45.2,8,23,true
+LKS-002,PL-189,high,Downtown District,40.7128,-74.0060,2024-01-18T08:15:00Z,in_progress,28.5,5,12,true
+LKS-003,PL-156,medium,Uptown Heights,40.7589,-73.9851,2024-01-17T22:45:00Z,patrol_only,12.3,2,5,false
+LKS-004,PL-234,critical,Factory Row,40.6956,-74.0789,2024-01-18T05:00:00Z,contained,52.8,12,34,true
+LKS-005,PL-178,low,South Residential,40.6989,-74.0198,2024-01-17T19:20:00Z,patrol_only,5.1,0,0,false
+LKS-006,PL-198,high,Harbor Front,40.7034,-74.0172,2024-01-18T09:30:00Z,in_progress,31.2,6,15,true
+LKS-007,PL-167,medium,Eastside Manor,40.7505,-73.9934,2024-01-17T16:00:00Z,patrol_only,15.7,1,3,false
+LKS-008,PL-212,critical,Westside Plaza,40.7549,-74.0087,2024-01-18T07:45:00Z,contained,48.3,9,27,true
+LKS-009,PL-145,low,Lakeside View,40.7256,-74.0234,2024-01-17T21:30:00Z,patrol_only,7.8,0,0,false
+LKS-010,PL-223,high,Central Business,40.7580,-73.9855,2024-01-18T10:00:00Z,in_progress,25.6,4,9,true
+LKS-011,PL-134,medium,Old Town,40.7201,-74.0023,2024-01-17T14:15:00Z,patrol_only,18.4,2,6,false
+LKS-012,PL-201,critical,North Industrial,40.7831,-73.9712,2024-01-18T04:15:00Z,contained,55.1,15,41,true
+LKS-013,PL-189,high,Downtown District,40.7128,-74.0060,2024-01-16T11:30:00Z,resolved,22.3,3,8,true
+LKS-014,PL-156,medium,Uptown Heights,40.7589,-73.9851,2024-01-15T20:00:00Z,resolved,14.2,1,4,true
+LKS-015,PL-178,low,South Residential,40.6989,-74.0198,2024-01-14T18:45:00Z,resolved,4.2,0,0,false

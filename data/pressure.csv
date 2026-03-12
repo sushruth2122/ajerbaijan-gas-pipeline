@@ -1,0 +1,26 @@
+pipeline_id,pressure,temperature,flow_rate,timestamp,location,status,anomaly
+PL-189,45.2,18.5,1200,2024-01-18T10:00:00Z,Downtown District,normal,false
+PL-156,42.8,19.2,1150,2024-01-18T10:00:00Z,Uptown Heights,normal,false
+PL-205,28.5,22.1,980,2024-01-18T10:00:00Z,Industrial Zone A,warning,true
+PL-167,48.3,17.8,1320,2024-01-18T10:00:00Z,Eastside Manor,normal,false
+PL-212,31.2,21.5,890,2024-01-18T10:00:00Z,Westside Plaza,warning,true
+PL-201,25.6,23.8,750,2024-01-18T10:00:00Z,North Industrial,critical,true
+PL-178,46.7,18.2,1280,2024-01-18T10:00:00Z,South Residential,normal,false
+PL-223,44.1,19.5,1180,2024-01-18T10:00:00Z,Central Business,normal,false
+PL-198,38.9,20.3,1050,2024-01-18T10:00:00Z,Harbor Front,normal,false
+PL-145,47.5,18.0,1250,2024-01-18T10:00:00Z,Lakeside View,normal,false
+PL-234,22.4,24.5,680,2024-01-18T10:00:00Z,Factory Row,critical,true
+PL-189,44.8,18.6,1180,2024-01-18T09:00:00Z,Downtown District,normal,false
+PL-156,43.1,19.0,1160,2024-01-18T09:00:00Z,Uptown Heights,normal,false
+PL-205,29.2,22.0,990,2024-01-18T09:00:00Z,Industrial Zone A,warning,true
+PL-167,48.0,17.9,1310,2024-01-18T09:00:00Z,Eastside Manor,normal,false
+PL-212,30.8,21.6,880,2024-01-18T09:00:00Z,Westside Plaza,warning,true
+PL-201,26.1,23.5,760,2024-01-18T09:00:00Z,North Industrial,critical,true
+PL-178,46.9,18.1,1290,2024-01-18T09:00:00Z,South Residential,normal,false
+PL-223,44.5,19.4,1190,2024-01-18T09:00:00Z,Central Business,normal,false
+PL-198,39.2,20.2,1060,2024-01-18T09:00:00Z,Harbor Front,normal,false
+PL-189,35.2,20.1,950,2024-01-18T08:00:00Z,Downtown District,warning,true
+PL-156,41.8,19.8,1120,2024-01-18T08:00:00Z,Uptown Heights,normal,false
+PL-205,32.5,21.2,1020,2024-01-18T08:00:00Z,Industrial Zone A,warning,true
+PL-167,49.2,17.5,1350,2024-01-18T08:00:00Z,Eastside Manor,normal,false
+PL-212,33.8,20.8,920,2024-01-18T08:00:00Z,Westside Plaza,warning,true

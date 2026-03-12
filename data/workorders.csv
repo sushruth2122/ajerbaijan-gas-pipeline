@@ -1,0 +1,16 @@
+workorder_id,asset_id,crew_id,status,priority,assigned_time,estimated_resolution_time,actual_resolution_time,location,type
+WO-001,AST-003,CRW-A,in_progress,high,2024-01-18T06:45:00Z,2024-01-18T10:45:00Z,,Industrial Zone A,repair
+WO-002,AST-008,CRW-B,in_progress,critical,2024-01-18T05:00:00Z,2024-01-18T09:00:00Z,,North Industrial,emergency
+WO-003,AST-013,CRW-C,assigned,high,2024-01-18T08:30:00Z,2024-01-18T14:30:00Z,,Valley Industrial,maintenance
+WO-004,AST-017,CRW-D,assigned,medium,2024-01-18T09:00:00Z,2024-01-18T17:00:00Z,,Factory Row,inspection
+WO-005,AST-007,CRW-A,completed,medium,2024-01-17T14:00:00Z,2024-01-17T18:00:00Z,2024-01-17T17:30:00Z,Westside Plaza,repair
+WO-006,AST-005,CRW-B,completed,low,2024-01-17T10:00:00Z,2024-01-17T16:00:00Z,2024-01-17T15:45:00Z,Commercial Center,maintenance
+WO-007,AST-020,CRW-E,assigned,high,2024-01-18T07:15:00Z,2024-01-18T13:15:00Z,,Mountain View,repair
+WO-008,AST-015,CRW-C,pending,low,2024-01-18T10:00:00Z,2024-01-18T18:00:00Z,,Market District,inspection
+WO-009,AST-001,CRW-D,completed,medium,2024-01-17T08:00:00Z,2024-01-17T14:00:00Z,2024-01-17T13:20:00Z,Downtown District,maintenance
+WO-010,AST-011,CRW-A,completed,low,2024-01-17T12:00:00Z,2024-01-17T18:00:00Z,2024-01-17T17:00:00Z,Riverside Complex,inspection
+WO-011,AST-002,,pending,low,2024-01-18T11:00:00Z,2024-01-19T11:00:00Z,,Uptown Heights,maintenance
+WO-012,AST-004,,pending,medium,2024-01-18T12:00:00Z,2024-01-18T20:00:00Z,,Residential Block B,repair
+WO-013,AST-006,,pending,low,2024-01-18T13:00:00Z,2024-01-19T13:00:00Z,,Eastside Manor,inspection
+WO-014,AST-009,,pending,low,2024-01-18T14:00:00Z,2024-01-19T14:00:00Z,,South Residential,maintenance
+WO-015,AST-010,,pending,medium,2024-01-18T15:00:00Z,2024-01-18T23:00:00Z,,Central Business,repair

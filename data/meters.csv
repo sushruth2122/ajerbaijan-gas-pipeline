@@ -1,0 +1,26 @@
+meter_id,customer_id,location,latitude,longitude,status,last_reading,communication_status,installation_date,meter_type
+MTR-001,CUST-1001,Downtown District,40.7128,-74.0060,active,1250.5,online,2022-03-15,smart
+MTR-002,CUST-1002,Uptown Heights,40.7589,-73.9851,active,2340.2,online,2021-08-22,smart
+MTR-003,CUST-1003,Industrial Zone A,40.6892,-74.0445,active,5670.8,online,2020-11-10,industrial
+MTR-004,CUST-1004,Residential Block B,40.7282,-73.9942,inactive,890.3,offline,2021-05-18,smart
+MTR-005,CUST-1005,Commercial Center,40.7614,-73.9776,active,4560.1,online,2022-01-30,commercial
+MTR-006,CUST-1006,Eastside Manor,40.7505,-73.9934,active,1780.6,online,2021-09-05,smart
+MTR-007,CUST-1007,Westside Plaza,40.7549,-74.0087,warning,2345.9,intermittent,2020-07-12,smart
+MTR-008,CUST-1008,North Industrial,40.7831,-73.9712,active,6780.4,online,2019-12-03,industrial
+MTR-009,CUST-1009,South Residential,40.6989,-74.0198,active,1450.2,online,2022-06-20,smart
+MTR-010,CUST-1010,Central Business,40.7580,-73.9855,active,8920.7,online,2020-04-15,commercial
+MTR-011,CUST-1011,Riverside Complex,40.7023,-74.0168,active,2340.5,online,2021-11-28,smart
+MTR-012,CUST-1012,Hillside Estate,40.7654,-73.9823,error,560.8,offline,2020-09-14,smart
+MTR-013,CUST-1013,Valley Industrial,40.7123,-74.0567,active,7890.3,online,2019-06-08,industrial
+MTR-014,CUST-1014,Parkside Homes,40.7356,-73.9905,active,1890.4,online,2022-02-14,smart
+MTR-015,CUST-1015,Market District,40.7489,-73.9680,active,3450.6,online,2021-04-22,commercial
+MTR-016,CUST-1016,Lakeside View,40.7256,-74.0234,warning,1670.2,intermittent,2020-10-30,smart
+MTR-017,CUST-1017,Factory Row,40.6956,-74.0789,active,9230.1,online,2019-03-17,industrial
+MTR-018,CUST-1018,Greenwood Ave,40.7412,-73.9896,active,2120.8,online,2021-07-09,smart
+MTR-019,CUST-1019,Harbor Front,40.7034,-74.0172,active,4560.3,online,2022-08-05,commercial
+MTR-020,CUST-1020,Mountain View,40.7789,-73.9654,inactive,780.5,offline,2020-12-12,smart
+MTR-021,CUST-1021,City Center,40.7501,-73.9834,active,5670.9,online,2021-01-25,smart
+MTR-022,CUST-1022,Old Town,40.7201,-74.0023,active,2890.4,online,2020-05-19,smart
+MTR-023,CUST-1023,New Development,40.7689,-73.9545,active,1230.7,online,2022-09-10,smart
+MTR-024,CUST-1024,Port Authority,40.7089,-74.0323,active,6780.2,online,2019-08-14,industrial
+MTR-025,CUST-1025,University Area,40.7389,-73.9912,warning,1980.6,intermittent,2021-03-28,smart
