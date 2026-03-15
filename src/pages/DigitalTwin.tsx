@@ -17,7 +17,7 @@ function MetricCard({ icon: Icon, label, value, unit, status }: {
   icon: React.ElementType; label: string; value: number | string; unit?: string; status: "normal" | "warning" | "critical";
 }) {
   return (
-    <div className="glass-panel rounded-lg p-4">
+    <div className="glass-panel rounded-sm p-4">
       <div className="flex items-center gap-2 mb-2">
         <Icon className={`w-4 h-4 ${statusColors[status]}`} />
         <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{label}</span>
@@ -45,14 +45,14 @@ const DigitalTwin = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-semibold">Network Map</h1>
-        <p className="text-sm text-muted-foreground">Live pipeline visualisation & network monitoring</p>
+        <h1 className="text-lg font-bold tracking-wide uppercase">Network Map</h1>
+        <p className="text-[11px] font-mono text-muted-foreground tracking-wide">Live pipeline visualisation & network monitoring</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
         {/* Main visualization */}
         <div className="lg:col-span-3 space-y-4">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="glass-panel rounded-lg overflow-hidden" style={{ height: "520px" }}>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="glass-panel rounded-sm overflow-hidden" style={{ height: "520px" }}>
             <GasICCCMap mapData={mapData ?? null} />
           </motion.div>
 

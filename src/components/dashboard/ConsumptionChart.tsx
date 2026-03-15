@@ -6,8 +6,8 @@ export function ConsumptionChart() {
   const { data } = useDashboard();
   const consumptionTrend = data?.consumptionTrend ?? fallback;
   return (
-    <div className="glass-panel rounded-lg p-4">
-      <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+    <div className="glass-panel rounded-sm p-4 scada-bracket">
+      <h3 className="scada-label mb-4">
         City Gas Consumption Trend (Today)
       </h3>
       <div className="h-[250px]">
@@ -26,7 +26,7 @@ export function ConsumptionChart() {
               contentStyle={{
                 backgroundColor: "hsl(220, 18%, 12%)",
                 border: "1px solid hsl(220, 15%, 18%)",
-                borderRadius: "8px",
+                borderRadius: "2px",
                 fontSize: "12px",
                 color: "hsl(210, 20%, 90%)",
               }}

@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        mono: ["JetBrains Mono", "Share Tech Mono", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -92,10 +92,26 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "scada-ping": {
+          "0%": { transform: "scale(1)", opacity: "1" },
+          "75%": { transform: "scale(2.5)", opacity: "0" },
+          "100%": { transform: "scale(1)", opacity: "0" },
+        },
+        "scada-glow": {
+          "0%, 100%": { boxShadow: "0 0 4px hsl(var(--primary) / 0.3)" },
+          "50%": { boxShadow: "0 0 16px hsl(var(--primary) / 0.6)" },
+        },
+        "scada-data-update": {
+          "0%, 80%, 100%": { color: "hsl(var(--foreground))" },
+          "90%": { color: "hsl(var(--primary))" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "scada-ping": "scada-ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite",
+        "scada-glow": "scada-glow 2s ease-in-out infinite",
+        "scada-data": "scada-data-update 4s ease-in-out infinite",
       },
     },
   },

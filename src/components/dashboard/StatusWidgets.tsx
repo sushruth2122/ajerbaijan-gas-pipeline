@@ -13,8 +13,8 @@ export function FieldCrewStatus() {
   const fieldCrewStatus = data?.fieldCrewStatus ?? fbCrew;
   const total = fieldCrewStatus.reduce((s: number, c: any) => s + c.count, 0);
   return (
-    <div className="glass-panel rounded-lg p-4">
-      <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4 flex items-center gap-2">
+    <div className="glass-panel rounded-sm p-4 scada-bracket">
+      <h3 className="scada-label mb-4 flex items-center gap-2">
         <Users className="w-4 h-4" /> Field Crew Status
       </h3>
       <div className="flex gap-2 mb-3">
@@ -47,8 +47,8 @@ export function HighRiskZones() {
   const { data } = useDashboard();
   const highRiskZones = data?.highRiskZones ?? fbRisk;
   return (
-    <div className="glass-panel rounded-lg p-4">
-      <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4 flex items-center gap-2">
+    <div className="glass-panel rounded-sm p-4 scada-bracket">
+      <h3 className="scada-label mb-4 flex items-center gap-2">
         <AlertTriangle className="w-4 h-4 text-warning" /> Top 5 High Risk Pipeline Zones
       </h3>
       <div className="space-y-3">

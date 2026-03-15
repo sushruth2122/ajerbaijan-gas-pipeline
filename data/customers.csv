@@ -1,0 +1,54 @@
+customer_id,name,category,district,region,latitude,longitude,meter_id,status,connection_date,monthly_consumption,last_bill_amount,payment_status
+CUST-1001,Mammadov Household,smart,Nasimi,Baku,40.3750,49.8420,MTR-S001,active,2020-03-15,42,68.50,paid
+CUST-1002,Aliyeva Residence,smart,Yasamal,Baku,40.3830,49.8350,MTR-S002,active,2019-07-22,38,61.20,paid
+CUST-1003,Hasanov Family,smart,Sabail,Baku,40.3660,49.8370,MTR-S003,active,2021-01-10,55,89.75,overdue
+CUST-1004,Guliyev Home,smart,Khatai,Baku,40.3900,49.8700,MTR-S004,active,2018-11-05,47,76.30,paid
+CUST-1005,Huseynov Flat,smart,Binagadi,Baku,40.4500,49.9500,MTR-S005,active,2022-04-18,31,50.10,paid
+CUST-1006,Rahimov Apartment,smart,Surakhani,Baku,40.4350,50.0200,MTR-S006,active,2020-09-01,44,71.60,paid
+CUST-1007,Ismayilova House,smart,Narimanov,Baku,40.4100,49.8600,MTR-S007,active,2019-12-20,52,84.50,overdue
+CUST-1008,Jafarov Residence,smart,Sabunchi,Baku,40.4300,49.9600,MTR-S008,active,2021-06-14,36,58.20,paid
+CUST-1009,Bayramov Home,smart,Qaradag,Baku,40.3200,49.9000,MTR-S009,active,2017-08-30,60,97.80,paid
+CUST-1010,Suleymanov Flat,smart,Pirallahi,Baku,40.4800,50.0500,MTR-S010,inactive,2018-05-12,0,0.00,n/a
+CUST-1011,Karimov Household,smart,Khazar,Baku,40.5200,50.0100,MTR-S011,active,2020-02-28,48,78.00,paid
+CUST-1012,Abbasov Residence,smart,Nizami,Baku,40.3720,49.8430,MTR-S012,active,2021-10-05,41,66.40,paid
+CUST-1013,Novruzov Family,smart,Nasimi,Baku,40.3770,49.8450,MTR-S013,active,2019-04-15,39,63.10,overdue
+CUST-1014,Maharov House,smart,Yasamal,Baku,40.3850,49.8300,MTR-S014,active,2022-01-20,33,53.30,paid
+CUST-1015,Tagiyev Flat,smart,Sabail,Baku,40.3680,49.8360,MTR-S015,active,2020-07-08,46,74.50,paid
+CUST-1016,Ahmadov Home,smart,Lokbatan,Absheron,40.3100,49.7500,MTR-S016,active,2018-03-25,58,94.20,paid
+CUST-1017,Rzayev Residence,smart,Khirdalan,Absheron,40.4500,49.9500,MTR-S017,active,2021-08-12,35,56.70,paid
+CUST-1018,Mukhtarov Family,smart,Masazir,Absheron,40.4800,49.9800,MTR-S018,active,2019-11-30,43,69.80,paid
+CUST-1019,Aslanov Apartment,smart,Sumgait,Sumgait,40.5850,49.6350,MTR-S019,active,2020-05-22,50,81.00,overdue
+CUST-1020,Nabiyev House,smart,Sumgait,Sumgait,40.5900,49.6400,MTR-S020,active,2017-09-14,62,100.80,paid
+CUST-1021,Abdullayev Flat,smart,Mingachevir,Mingachevir,40.7600,47.0500,MTR-S021,active,2021-03-07,37,59.90,paid
+CUST-1022,Mirzayev Home,smart,Ganja,Ganja,40.6800,46.3600,MTR-S022,active,2019-06-18,45,72.90,paid
+CUST-1023,Quliyev Residence,smart,Ganja,Ganja,40.6750,46.3500,MTR-S023,active,2020-12-01,40,64.80,paid
+CUST-1024,Valiyev Family,smart,Shirvan,Shirvan,40.0800,48.2000,MTR-S024,active,2022-02-14,34,55.00,paid
+CUST-1025,Orujov House,smart,Shirvan,Shirvan,40.0750,48.1900,MTR-S025,active,2018-10-20,51,82.60,paid
+CUST-1026,Zeynalov Home,smart,Lankaran,Lankaran,38.7500,48.8500,MTR-S026,active,2021-05-15,29,46.90,paid
+CUST-1027,Bagirov Flat,smart,Lankaran,Lankaran,38.7550,48.8600,MTR-S027,active,2020-08-30,32,51.80,paid
+CUST-1028,Muslumov Household,smart,Sheki,Sheki,41.1900,47.1700,MTR-S028,active,2019-01-10,27,43.70,paid
+CUST-1029,Ibrahimov Residence,smart,Shamakhi,Shamakhi,40.6300,48.6400,MTR-S029,active,2022-06-25,30,48.60,overdue
+CUST-1030,Pashayev Family,smart,Barda,Barda,40.3700,47.1300,MTR-S030,active,2020-11-18,33,53.30,paid
+CUST-2001,Azergas Commercial Center,commercial,Nasimi,Baku,40.3780,49.8460,MTR-C001,active,2018-06-10,820,2460.00,paid
+CUST-2002,Caspian Business Plaza,commercial,Sabail,Baku,40.3650,49.8350,MTR-C002,active,2019-03-22,1150,3450.00,paid
+CUST-2003,Flame Towers Mall,commercial,Yasamal,Baku,40.3590,49.8230,MTR-C003,active,2017-12-01,950,2850.00,paid
+CUST-2004,Port Baku Office Complex,commercial,Nasimi,Baku,40.3730,49.8380,MTR-C004,active,2020-08-15,1340,4020.00,overdue
+CUST-2005,Deniz Mall,commercial,Khatai,Baku,40.3860,49.8480,MTR-C005,active,2021-02-28,780,2340.00,paid
+CUST-2006,28 Mall Shopping Center,commercial,Nizami,Baku,40.3700,49.8300,MTR-C006,active,2019-10-14,1100,3300.00,paid
+CUST-2007,Ganja Mall,commercial,Ganja,Ganja,40.6820,46.3650,MTR-C007,active,2020-04-20,620,1860.00,paid
+CUST-2008,Sumgait Trade Center,commercial,Sumgait,Sumgait,40.5870,49.6320,MTR-C008,active,2018-09-05,540,1620.00,paid
+CUST-2009,Hilton Baku Hotel,commercial,Sabail,Baku,40.3670,49.8340,MTR-C009,active,2017-05-18,1580,4740.00,paid
+CUST-2010,Hyatt Regency Baku,commercial,Nasimi,Baku,40.3740,49.8400,MTR-C010,active,2019-07-12,1420,4260.00,overdue
+CUST-2011,JW Marriott Absheron,commercial,Khatai,Baku,40.3870,49.8490,MTR-C011,active,2020-01-30,1680,5040.00,paid
+CUST-2012,Narimanov Business Park,commercial,Narimanov,Baku,40.4120,49.8620,MTR-C012,active,2021-09-08,460,1380.00,paid
+CUST-2013,Shirvan Plaza Hotel,commercial,Shirvan,Shirvan,40.0820,48.2050,MTR-C013,active,2022-03-15,380,1140.00,paid
+CUST-2014,Lankaran Springs Resort,commercial,Lankaran,Lankaran,38.7520,48.8550,MTR-C014,active,2020-06-22,290,870.00,paid
+CUST-2015,Mingachevir Trade Hub,commercial,Mingachevir,Mingachevir,40.7620,47.0550,MTR-C015,active,2019-11-10,410,1230.00,paid
+CUST-3001,SOCAR Refinery Complex,industrial,Qaradag,Baku,40.3100,49.8800,MTR-I001,active,2015-04-10,42000,84000.00,paid
+CUST-3002,Azerchemia Plant,industrial,Sumgait,Sumgait,40.5950,49.6250,MTR-I002,active,2016-08-20,38500,77000.00,paid
+CUST-3003,Baku Steel Company,industrial,Khatai,Baku,40.3950,49.8750,MTR-I003,active,2014-11-15,51000,102000.00,paid
+CUST-3004,Mingachevir Power Station,industrial,Mingachevir,Mingachevir,40.7650,47.0600,MTR-I004,active,2013-06-01,65000,130000.00,overdue
+CUST-3005,Baku Shipyard,industrial,Qaradag,Baku,40.3200,49.9100,MTR-I005,active,2017-02-28,28000,56000.00,paid
+CUST-3006,Glass Production Factory,industrial,Khirdalan,Absheron,40.4550,49.9550,MTR-I006,active,2018-10-12,22000,44000.00,paid
+CUST-3007,Ganja Aluminum Plant,industrial,Ganja,Ganja,40.6850,46.3700,MTR-I007,active,2015-09-25,34000,68000.00,paid
+CUST-3008,Shirvan Oil Processing,industrial,Shirvan,Shirvan,40.0850,48.2100,MTR-I008,active,2016-03-18,29000,58000.00,paid

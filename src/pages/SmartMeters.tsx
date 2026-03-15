@@ -41,8 +41,8 @@ const SmartMeters = () => {
   return (
   <div className="space-y-6">
     <div>
-      <h1 className="text-xl font-semibold">Smart Meters</h1>
-      <p className="text-sm text-muted-foreground">Meter health, consumption trends & communication status</p>
+      <h1 className="text-lg font-bold tracking-wide uppercase">Smart Meters</h1>
+      <p className="text-[11px] font-mono text-muted-foreground tracking-wide">Meter health, consumption trends & communication status</p>
     </div>
 
     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">

@@ -6,8 +6,8 @@ export function RevenueChart() {
   const { data } = useDashboard();
   const revenueVsConsumption = data?.revenueVsConsumption ?? fallback;
   return (
-    <div className="glass-panel rounded-lg p-4">
-      <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+    <div className="glass-panel rounded-sm p-4 scada-bracket">
+      <h3 className="scada-label mb-4">
         Revenue vs Consumption (Monthly)
       </h3>
       <div className="h-[250px]">
@@ -20,14 +20,14 @@ export function RevenueChart() {
               contentStyle={{
                 backgroundColor: "hsl(220, 18%, 12%)",
                 border: "1px solid hsl(220, 15%, 18%)",
-                borderRadius: "8px",
+                borderRadius: "2px",
                 fontSize: "12px",
                 color: "hsl(210, 20%, 90%)",
               }}
             />
             <Legend wrapperStyle={{ fontSize: "12px" }} />
-            <Bar dataKey="revenue" fill="hsl(190, 80%, 45%)" radius={[4, 4, 0, 0]} name="Revenue (AZN M)" />
-            <Bar dataKey="consumption" fill="hsl(40, 90%, 55%)" radius={[4, 4, 0, 0]} name="Consumption (M m³)" />
+            <Bar dataKey="revenue" fill="hsl(190, 85%, 42%)" radius={[1, 1, 0, 0]} name="Revenue (AZN M)" />
+            <Bar dataKey="consumption" fill="hsl(40, 92%, 52%)" radius={[1, 1, 0, 0]} name="Consumption (M m³)" />
           </BarChart>
         </ResponsiveContainer>
       </div>

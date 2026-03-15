@@ -4,9 +4,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { KpiCard } from "@/components/dashboard/KpiCard";
 import { KpiDetailModal } from "@/components/dashboard/KpiDetailModal";
 import { AiAdvisory, CriticalAiAlerts } from "@/components/dashboard/AiAdvisory";
+import { EmergencyResponsePanel } from "@/components/dashboard/EmergencyResponsePanel";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { safetyKpis as fbKpis, gasPressureTrends as fbPressure, leakDetectionActivity as fbLeak, safetyAlerts as fbAlerts } from "@/data/mockData";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { safetyKpis as fbKpis, gasPressureTrends as fbPressure, leakDetectionActivity as fbLeak, safetyAlerts as fbAlerts, emergencyResponse as fbEmergencyResponse, emergencyKpis as fbEmergencyKpis } from "@/data/mockData";
 import { allKpiMetadata } from "@/data/allKpiMetadata";
 import { LineChart, Line, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, ReferenceLine } from "recharts";
 import { useSafety } from "@/hooks/useApiData";
@@ -41,6 +43,8 @@ const Safety = () => {
   const gasPressureTrends = data?.pressureTrends ?? fbPressure;
   const leakDetectionActivity = data?.leakDetection ?? fbLeak;
   const baseSafetyAlerts = data?.alerts ?? fbAlerts;
+  const emergencyResponse = data?.emergencyResponse ?? fbEmergencyResponse;
+  const emergencyKpis = data?.emergencyKpis ?? fbEmergencyKpis;
   const { alerts: safetyAlerts, lastUpdated } = useLiveAlerts(baseSafetyAlerts, 30_000);
   const [selectedKpiIdx, setSelectedKpiIdx] = useState<number | null>(null);
   const selectedKpi = selectedKpiIdx !== null ? safetyKpis[selectedKpiIdx] : null;
@@ -48,9 +52,25 @@ const Safety = () => {
   return (
   <div className="space-y-6">
     <div>
-      <h1 className="text-xl font-semibold">Safety</h1>
-      <p className="text-sm text-muted-foreground">Leak detection, pressure monitoring & incident tracking</p>
+      <h1 className="text-lg font-bold tracking-wide uppercase">Safety & Emergency Response</h1>
+      <p className="text-[11px] font-mono text-muted-foreground tracking-wide">Leak detection, pressure monitoring, incident tracking & emergency dispatch</p>
     </div>
+
+    <Tabs defaultValue="monitoring" className="w-full">
+      <TabsList className="bg-secondary/60 mb-4">
+        <TabsTrigger value="monitoring">Monitoring</TabsTrigger>
+        <TabsTrigger value="emergency" className="flex items-center gap-1.5">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+          </span>
+          Emergency Response
+        </TabsTrigger>
+        <TabsTrigger value="alerts">Live Alerts</TabsTrigger>
+      </TabsList>
+
+      {/* ─── Monitoring Tab ─── */}
+      <TabsContent value="monitoring" className="space-y-6">
 
     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
       {safetyKpis.map((kpi, i) => {
@@ -110,7 +130,17 @@ const Safety = () => {
       </Card>
     </div>
 
-    {/* Safety Alerts */}
+    <AiAdvisory title="Safety AI Advisory" insights={safetyInsights} />
+
+      </TabsContent>
+
+      {/* ─── Emergency Response Tab ─── */}
+      <TabsContent value="emergency" className="space-y-6">
+        <EmergencyResponsePanel incidents={emergencyResponse} kpis={emergencyKpis} />
+      </TabsContent>
+
+      {/* ─── Live Alerts Tab ─── */}
+      <TabsContent value="alerts" className="space-y-6">
     <Card className="bg-card border-border">
       <CardHeader className="pb-3">
         <div className="flex items-center justify-between">
@@ -150,8 +180,9 @@ const Safety = () => {
         </AnimatePresence>
       </CardContent>
     </Card>
+      </TabsContent>
 
-    <AiAdvisory title="Safety AI Advisory" insights={safetyInsights} />
+    </Tabs>
   </div>
   );
 };

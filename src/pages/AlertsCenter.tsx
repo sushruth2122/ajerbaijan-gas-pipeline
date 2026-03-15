@@ -43,9 +43,9 @@ const AlertsCenter = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-xl font-semibold">Alerts</h1>
+        <h1 className="text-lg font-bold tracking-wide uppercase">Alerts</h1>
         <div className="flex items-center gap-2">
-          <p className="text-sm text-muted-foreground">Centralised alert monitoring across all subsystems</p>
+          <p className="text-[11px] font-mono text-muted-foreground tracking-wide">Centralised alert monitoring across all subsystems</p>
           <span className="relative flex h-2 w-2 ml-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
@@ -57,7 +57,7 @@ const AlertsCenter = () => {
       {/* Summary Cards */}
       <div className="grid grid-cols-3 gap-3">
         {(["critical", "warning", "info"] as const).map(sev => (
-          <div key={sev} className={`glass-panel rounded-lg p-4 ${sevBg[sev]}`}>
+          <div key={sev} className={`glass-panel rounded-sm p-4 ${sevBg[sev]}`}>
             <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">{sev}</p>
             <p className={`text-3xl font-semibold font-mono ${sevColors[sev]}`}>{counts[sev]}</p>
           </div>

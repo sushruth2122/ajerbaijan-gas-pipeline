@@ -51,8 +51,8 @@ const Index = () => {
     <div className="space-y-6">
       {/* Page header */}
       <div>
-        <h1 className="text-xl font-semibold">Overview</h1>
-        <p className="text-sm text-muted-foreground">Real-time operational intelligence across the gas distribution network</p>
+        <h1 className="text-lg font-bold tracking-wide uppercase">System Overview</h1>
+        <p className="text-[11px] font-mono text-muted-foreground tracking-wide">Real-time operational intelligence across the gas distribution network</p>
       </div>
 
       {/* KPI row */}

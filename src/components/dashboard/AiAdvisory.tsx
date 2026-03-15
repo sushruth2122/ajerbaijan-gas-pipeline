@@ -27,7 +27,7 @@ export function AiAdvisory({ title = "AI Advisory", insights, className = "" }: 
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35 }}
-      className={`rounded-lg border border-violet-500/30 bg-gradient-to-br from-violet-950/40 via-violet-900/20 to-transparent p-4 ${className}`}
+      className={`rounded-sm border border-violet-500/30 bg-gradient-to-br from-violet-950/40 via-violet-900/20 to-transparent p-4 ${className}`}
     >
       <div className="flex items-center gap-2 mb-3">
         <div className="p-1.5 rounded-md bg-violet-500/20">
@@ -79,7 +79,7 @@ export function CriticalAiAlerts({ alerts, className = "" }: CriticalAiAlertsPro
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className={`rounded-lg border border-red-500/40 bg-gradient-to-r from-red-950/50 via-red-900/20 to-violet-950/30 p-4 ${className}`}
+      className={`rounded-sm border border-red-500/40 bg-gradient-to-r from-red-950/50 via-red-900/20 to-violet-950/30 p-4 ${className}`}
     >
       <div className="flex items-center gap-2 mb-3">
         <div className="p-1.5 rounded-md bg-red-500/20">

@@ -19,3 +19,33 @@ AST-017,Pressure Regulator,2015,65,Factory Row,40.6956,-74.0789,2023-04-20,2024-
 AST-018,Gas Meter Hub,2019,85,Greenwood Ave,40.7412,-73.9896,2023-10-15,2024-10-15,low,PL-167
 AST-019,Monitoring Station,2021,94,Harbor Front,40.7034,-74.0172,2023-11-10,2024-11-10,low,PL-198
 AST-020,Compressor Unit,2014,61,Mountain View,40.7789,-73.9654,2023-03-28,2024-02-28,high,PL-201
+AST-021,Pipeline Segment,2016,73,Absheron East,40.4200,50.0000,2023-06-15,2024-04-15,medium,PL-189
+AST-022,Gas Meter Hub,2020,90,Shirvan Belt,40.0800,48.2000,2023-09-10,2024-09-10,low,PL-156
+AST-023,Pressure Regulator,2012,48,Old Town,40.3660,49.8370,2023-02-20,2024-01-05,critical,PL-234
+AST-024,Flow Meter,2021,93,New Development,40.4100,49.8700,2023-11-15,2024-11-15,low,PL-145
+AST-025,Compressor Station,2017,66,Port Authority,40.3500,49.8500,2023-05-10,2024-03-20,high,PL-205
+AST-026,Pressure Valve,2019,84,City Center,40.3950,49.8550,2023-10-01,2024-10-01,low,PL-167
+AST-027,Monitoring Station,2015,70,University Area,40.3850,49.8200,2023-04-25,2024-02-25,medium,PL-212
+AST-028,Control System,2018,81,Ganja Corridor,40.6800,46.3600,2023-08-20,2024-08-20,low,PL-198
+AST-029,Pipeline Segment,2011,45,Southern Outskirts,40.3200,49.9000,2023-01-10,2023-12-10,critical,PL-234
+AST-030,Pressure Sensor,2022,97,Modern Quarter,40.4050,49.8800,2023-12-15,2024-12-15,low,PL-223
+AST-031,Gas Meter Hub,2013,55,Bayil District,40.3400,49.8300,2023-03-20,2024-01-15,high,PL-201
+AST-032,Flow Control Valve,2020,88,Narimanov Plaza,40.4100,49.8600,2023-10-20,2024-10-20,low,PL-178
+AST-033,Compressor Unit,2016,63,Seaside Terminal,40.3700,49.8900,2023-05-15,2024-03-15,high,PL-205
+AST-034,Pressure Regulator,2019,86,Fountain Square,40.3720,49.8430,2023-09-05,2024-09-05,low,PL-189
+AST-035,Monitoring Station,2017,74,White City,40.3980,49.8780,2023-06-20,2024-06-20,medium,PL-212
+AST-036,Flow Meter,2014,59,Bibi-Heybat,40.3300,49.8100,2023-04-05,2024-01-18,high,PL-234
+AST-037,Pressure Valve,2021,94,Khirdalan Hub,40.4500,49.9500,2023-11-20,2024-11-20,low,PL-145
+AST-038,Control System,2012,50,Sabunchi Yard,40.4300,49.9600,2023-02-10,2024-01-10,critical,PL-201
+AST-039,Pipeline Segment,2018,83,Highland Park,40.3900,49.8650,2023-08-30,2024-08-30,low,PL-167
+AST-040,Gas Meter Hub,2015,69,Heydar Aliyev Center,40.3960,49.8680,2023-05-25,2024-04-25,medium,PL-198
+AST-041,Compressor Station,2010,42,Surakhani Field,40.4350,50.0200,2023-01-05,2023-11-15,critical,PL-205
+AST-042,Pressure Sensor,2020,91,Yasamal Ridge,40.3830,49.8350,2023-11-01,2024-11-01,low,PL-223
+AST-043,Flow Control Valve,2017,76,Nasimi Square,40.3750,49.8420,2023-07-10,2024-07-10,medium,PL-178
+AST-044,Pressure Regulator,2013,53,Mashtaga Zone,40.5200,50.0100,2023-03-01,2024-02-01,high,PL-234
+AST-045,Gas Meter Hub,2022,96,Baku Olympic Park,40.3690,49.8480,2023-12-10,2024-12-10,low,PL-156
+AST-046,Monitoring Station,2016,72,Lokbatan Cluster,40.3100,49.7500,2023-06-05,2024-05-05,medium,PL-212
+AST-047,Compressor Unit,2011,47,Ramana Industrial,40.4800,50.0500,2023-02-15,2023-12-20,critical,PL-201
+AST-048,Pipeline Segment,2019,85,Baku Boulevard,40.3650,49.8350,2023-09-25,2024-09-25,low,PL-189
+AST-049,Flow Meter,2018,80,Icherisheher,40.3660,49.8340,2023-07-18,2024-07-18,medium,PL-178
+AST-050,Control System,2015,67,Balakhani Junction,40.4600,50.0300,2023-04-15,2024-02-28,high,PL-205

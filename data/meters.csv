@@ -1,26 +1,401 @@
 meter_id,customer_id,location,latitude,longitude,status,last_reading,communication_status,installation_date,meter_type
-MTR-001,CUST-1001,Downtown District,40.7128,-74.0060,active,1250.5,online,2022-03-15,smart
-MTR-002,CUST-1002,Uptown Heights,40.7589,-73.9851,active,2340.2,online,2021-08-22,smart
-MTR-003,CUST-1003,Industrial Zone A,40.6892,-74.0445,active,5670.8,online,2020-11-10,industrial
-MTR-004,CUST-1004,Residential Block B,40.7282,-73.9942,inactive,890.3,offline,2021-05-18,smart
-MTR-005,CUST-1005,Commercial Center,40.7614,-73.9776,active,4560.1,online,2022-01-30,commercial
-MTR-006,CUST-1006,Eastside Manor,40.7505,-73.9934,active,1780.6,online,2021-09-05,smart
-MTR-007,CUST-1007,Westside Plaza,40.7549,-74.0087,warning,2345.9,intermittent,2020-07-12,smart
-MTR-008,CUST-1008,North Industrial,40.7831,-73.9712,active,6780.4,online,2019-12-03,industrial
-MTR-009,CUST-1009,South Residential,40.6989,-74.0198,active,1450.2,online,2022-06-20,smart
-MTR-010,CUST-1010,Central Business,40.7580,-73.9855,active,8920.7,online,2020-04-15,commercial
-MTR-011,CUST-1011,Riverside Complex,40.7023,-74.0168,active,2340.5,online,2021-11-28,smart
-MTR-012,CUST-1012,Hillside Estate,40.7654,-73.9823,error,560.8,offline,2020-09-14,smart
-MTR-013,CUST-1013,Valley Industrial,40.7123,-74.0567,active,7890.3,online,2019-06-08,industrial
-MTR-014,CUST-1014,Parkside Homes,40.7356,-73.9905,active,1890.4,online,2022-02-14,smart
-MTR-015,CUST-1015,Market District,40.7489,-73.9680,active,3450.6,online,2021-04-22,commercial
-MTR-016,CUST-1016,Lakeside View,40.7256,-74.0234,warning,1670.2,intermittent,2020-10-30,smart
-MTR-017,CUST-1017,Factory Row,40.6956,-74.0789,active,9230.1,online,2019-03-17,industrial
-MTR-018,CUST-1018,Greenwood Ave,40.7412,-73.9896,active,2120.8,online,2021-07-09,smart
-MTR-019,CUST-1019,Harbor Front,40.7034,-74.0172,active,4560.3,online,2022-08-05,commercial
-MTR-020,CUST-1020,Mountain View,40.7789,-73.9654,inactive,780.5,offline,2020-12-12,smart
-MTR-021,CUST-1021,City Center,40.7501,-73.9834,active,5670.9,online,2021-01-25,smart
-MTR-022,CUST-1022,Old Town,40.7201,-74.0023,active,2890.4,online,2020-05-19,smart
-MTR-023,CUST-1023,New Development,40.7689,-73.9545,active,1230.7,online,2022-09-10,smart
-MTR-024,CUST-1024,Port Authority,40.7089,-74.0323,active,6780.2,online,2019-08-14,industrial
-MTR-025,CUST-1025,University Area,40.7389,-73.9912,warning,1980.6,intermittent,2021-03-28,smart
+MTR-0001,CUST-1001,Sabunchi District,40.42775,49.920251,active,8890.4,online,2023-09-03,industrial
+MTR-0002,CUST-1002,Port Authority,40.352658,49.840894,active,6163.2,online,2022-04-23,smart
+MTR-0003,CUST-1003,Ramana,40.447586,49.908476,active,9153.9,online,2023-07-11,smart
+MTR-0004,CUST-1004,Mingachevir West,40.744664,47.053716,active,1294.4,online,2020-06-20,smart
+MTR-0005,CUST-1005,Mingachevir East,40.777214,47.086892,active,11682.8,online,2018-09-10,smart
+MTR-0006,CUST-1006,Seaside Terminal,40.371564,49.845849,active,1020.8,online,2019-05-03,industrial
+MTR-0007,CUST-1007,Sumqayit South,40.587995,49.614404,active,10042.5,online,2020-06-07,smart
+MTR-0008,CUST-1008,Mingachevir West,40.761055,47.045506,active,7692.7,online,2023-04-06,commercial
+MTR-0009,CUST-1009,Baku Commercial Hub,40.391384,49.884686,warning,6772.0,online,2020-01-08,industrial
+MTR-0010,CUST-1010,Sabail District,40.372151,49.831035,active,10975.0,online,2023-06-07,commercial
+MTR-0011,CUST-1011,Bibi-Heybat,40.306869,49.832436,active,3325.6,online,2023-09-18,smart
+MTR-0012,CUST-1012,Mingachevir East,40.77541,47.077853,active,4471.6,online,2022-08-03,smart
+MTR-0013,CUST-1013,Khatai District,40.400833,49.869585,active,5181.5,online,2021-07-20,smart
+MTR-0014,CUST-1014,Baku Commercial Hub,40.395873,49.884132,active,8704.5,online,2022-05-25,industrial
+MTR-0015,CUST-1015,Lankaran,38.741347,48.849043,active,11455.0,online,2020-09-25,industrial
+MTR-0016,CUST-1016,Nizami District,40.37623,49.816192,warning,10131.7,intermittent,2022-04-05,commercial
+MTR-0017,CUST-1017,Shamakhi,40.637875,48.641181,error,11038.2,offline,2020-08-01,commercial
+MTR-0018,CUST-1018,Sabunchi District,40.454873,49.938362,active,883.5,online,2018-02-24,commercial
+MTR-0019,CUST-1019,Bibi-Heybat,40.319481,49.83434,active,1684.0,intermittent,2021-09-06,industrial
+MTR-0020,CUST-1020,Mingachevir East,40.76883,47.083198,active,9112.1,online,2019-12-10,industrial
+MTR-0021,CUST-1021,Masazir,40.509854,49.764496,active,5527.5,online,2019-02-11,smart
+MTR-0022,CUST-1022,Yasamal District,40.385649,49.826903,active,1037.7,online,2018-04-03,industrial
+MTR-0023,CUST-1023,Sabail District,40.373789,49.821126,active,8093.9,online,2022-03-24,smart
+MTR-0024,CUST-1024,Heydar Aliyev Zone,40.412286,49.86429,active,2446.8,online,2023-07-12,smart
+MTR-0025,CUST-1025,Absheron East,40.417333,49.990915,active,7910.8,online,2018-01-13,industrial
+MTR-0026,CUST-1026,Lankaran,38.762018,48.839278,active,6528.2,online,2021-03-09,smart
+MTR-0027,CUST-1027,Baku Commercial Hub,40.387494,49.882698,active,1355.3,online,2022-01-03,industrial
+MTR-0028,CUST-1028,Sumqayit Central,40.579989,49.624569,active,10848.8,online,2021-01-13,smart
+MTR-0029,CUST-1029,Mingachevir East,40.780796,47.088554,active,8419.8,online,2024-09-22,industrial
+MTR-0030,CUST-1030,Bibi-Heybat,40.299644,49.813901,active,8881.7,online,2023-06-02,smart
+MTR-0031,CUST-1031,Khatai District,40.392525,49.880086,active,871.2,online,2018-03-03,commercial
+MTR-0032,CUST-1032,Bayil District,40.340039,49.851855,active,11310.8,online,2019-10-20,commercial
+MTR-0033,CUST-1033,Sabail District,40.366581,49.831577,active,6368.8,online,2019-11-23,smart
+MTR-0034,CUST-1034,Shirvan Central,39.930161,48.916874,warning,3740.0,online,2024-02-01,smart
+MTR-0035,CUST-1035,Baku Commercial Hub,40.398635,49.87189,active,6544.1,online,2020-03-12,commercial
+MTR-0036,CUST-1036,Binagadi District,40.459378,49.814086,active,10038.2,online,2020-10-26,industrial
+MTR-0037,CUST-1037,Buzovna,40.545235,50.109513,active,1422.3,online,2020-02-04,smart
+MTR-0038,CUST-1038,Balakhani,40.454663,49.928453,active,4246.0,online,2023-05-17,industrial
+MTR-0039,CUST-1039,Bibi-Heybat,40.302534,49.832245,active,7684.6,online,2018-01-11,smart
+MTR-0040,CUST-1040,Qaradag District,40.316113,49.982859,inactive,6709.8,offline,2022-01-04,smart
+MTR-0041,CUST-1041,Binagadi District,40.461352,49.823731,active,625.1,online,2022-09-05,smart
+MTR-0042,CUST-1042,Absheron East,40.408823,49.974248,active,2678.9,online,2023-02-12,smart
+MTR-0043,CUST-1043,Balakhani,40.476524,49.932191,active,2023.7,intermittent,2024-03-26,smart
+MTR-0044,CUST-1044,Nizami District,40.387442,49.813744,inactive,9432.2,offline,2024-11-28,smart
+MTR-0045,CUST-1045,Sumqayit Central,40.583004,49.633621,active,10491.6,online,2019-04-27,commercial
+MTR-0046,CUST-1046,Baku Commercial Hub,40.39049,49.879616,active,479.2,online,2021-06-09,smart
+MTR-0047,CUST-1047,Binagadi District,40.462007,49.811374,warning,4916.2,intermittent,2020-01-04,commercial
+MTR-0048,CUST-1048,Mingachevir East,40.758357,47.093876,active,1479.2,online,2020-12-26,smart
+MTR-0049,CUST-1049,Shirvan Central,39.936092,48.934527,active,10814.2,online,2020-01-23,smart
+MTR-0050,CUST-1050,Absheron East,40.405051,49.992767,active,8689.3,online,2023-11-07,industrial
+MTR-0051,CUST-1051,Shamakhi,40.627939,48.653466,active,3904.2,online,2023-05-17,smart
+MTR-0052,CUST-1052,Ganja South,40.680007,46.334785,warning,6742.1,intermittent,2021-11-13,smart
+MTR-0053,CUST-1053,Nizami District,40.379465,49.822028,active,3785.7,online,2021-10-20,smart
+MTR-0054,CUST-1001,Shirvan Central,39.93695,48.918265,active,5783.6,online,2019-11-03,industrial
+MTR-0055,CUST-1002,Ganja North,40.692464,46.373988,active,9857.4,online,2019-11-10,residential
+MTR-0056,CUST-1003,Sumqayit South,40.586197,49.607421,active,11810.4,online,2024-02-15,commercial
+MTR-0057,CUST-1004,Khirdalan,40.464584,49.75727,inactive,4730.9,offline,2019-03-21,smart
+MTR-0058,CUST-1005,Nasimi District,40.38678,49.852813,active,5216.7,intermittent,2024-12-17,smart
+MTR-0059,CUST-1006,Baku Commercial Hub,40.381507,49.862476,active,1773.4,online,2023-09-18,smart
+MTR-0060,CUST-1007,Bayil District,40.347519,49.848658,active,9817.1,online,2021-09-15,commercial
+MTR-0061,CUST-1008,Khazar District,40.52031,49.99924,active,3117.4,intermittent,2020-09-16,industrial
+MTR-0062,CUST-1009,Sumqayit Central,40.583238,49.612325,active,3406.2,online,2022-02-05,smart
+MTR-0063,CUST-1010,Pirallahi District,40.476938,50.055818,inactive,957.9,offline,2020-09-15,smart
+MTR-0064,CUST-1011,Khirdalan,40.439868,49.764987,active,7092.1,intermittent,2018-10-13,industrial
+MTR-0065,CUST-1012,Old Town Baku,40.351177,49.832553,error,10270.7,offline,2022-12-24,smart
+MTR-0066,CUST-1013,Ramana,40.458996,49.921934,active,3420.6,online,2018-07-11,commercial
+MTR-0067,CUST-1014,Masazir,40.501725,49.770215,active,6502.7,online,2022-10-22,smart
+MTR-0068,CUST-1015,Yasamal District,40.370518,49.832858,active,793.4,online,2020-04-15,smart
+MTR-0069,CUST-1016,Shirvan Central,39.933125,48.931389,active,11424.2,intermittent,2020-02-16,smart
+MTR-0070,CUST-1017,Yasamal District,40.390471,49.821563,active,7871.7,online,2023-01-25,residential
+MTR-0071,CUST-1018,Yasamal District,40.396488,49.825981,active,1998.1,online,2021-11-04,smart
+MTR-0072,CUST-1019,Heydar Aliyev Zone,40.423433,49.870951,active,4553.0,intermittent,2022-12-23,commercial
+MTR-0073,CUST-1020,Sabunchi District,40.450334,49.916913,active,7028.5,online,2022-11-13,smart
+MTR-0074,CUST-1021,Masazir,40.508244,49.75095,active,10000.7,online,2018-12-25,smart
+MTR-0075,CUST-1022,Ganja South,40.685509,46.343012,active,9435.1,online,2022-07-22,smart
+MTR-0076,CUST-1023,Shamakhi,40.617069,48.644426,active,9903.5,online,2021-06-21,smart
+MTR-0077,CUST-1024,Baku Commercial Hub,40.401219,49.868065,inactive,11592.6,offline,2022-09-25,smart
+MTR-0078,CUST-1025,Old Town Baku,40.364946,49.846772,active,4003.2,online,2024-02-09,smart
+MTR-0079,CUST-1026,Baku Industrial Zone,40.332316,49.858941,active,4672.1,online,2021-06-06,smart
+MTR-0080,CUST-1027,Bibi-Heybat,40.301364,49.828935,active,10587.8,online,2020-09-01,industrial
+MTR-0081,CUST-1028,Buzovna,40.573442,50.087568,inactive,5965.2,offline,2019-12-16,residential
+MTR-0082,CUST-1029,Bibi-Heybat,40.308445,49.805517,active,4971.9,online,2020-11-19,smart
+MTR-0083,CUST-1030,Shamakhi,40.629198,48.640928,active,6694.6,intermittent,2023-08-09,smart
+MTR-0084,CUST-1031,Ganja South,40.667542,46.32862,active,1610.7,online,2024-12-06,commercial
+MTR-0085,CUST-1032,Lokbatan,40.311492,49.749526,inactive,11724.0,offline,2022-05-04,commercial
+MTR-0086,CUST-1033,Lokbatan,40.313887,49.745826,active,8554.6,online,2020-01-02,smart
+MTR-0087,CUST-1034,Balakhani,40.458764,49.948323,warning,5992.4,online,2022-05-16,smart
+MTR-0088,CUST-1035,Old Town Baku,40.364214,49.827531,active,11304.6,online,2018-02-13,commercial
+MTR-0089,CUST-1036,Bibi-Heybat,40.297222,49.823883,active,1960.5,online,2020-02-08,commercial
+MTR-0090,CUST-1037,Sabunchi District,40.443742,49.924485,active,2863.1,online,2021-08-15,commercial
+MTR-0091,CUST-1038,Ganja South,40.685805,46.354701,active,7528.1,online,2023-02-25,commercial
+MTR-0092,CUST-1039,Sumqayit North,40.601765,49.624939,active,3030.4,online,2018-03-01,commercial
+MTR-0093,CUST-1040,Khirdalan,40.451515,49.757814,active,2931.4,online,2020-12-28,industrial
+MTR-0094,CUST-1041,Baku Commercial Hub,40.382135,49.862003,active,7159.5,online,2021-02-18,smart
+MTR-0095,CUST-1042,Sumqayit South,40.581429,49.630252,active,903.7,online,2022-12-27,smart
+MTR-0096,CUST-1043,Heydar Aliyev Zone,40.422636,49.870175,active,3788.3,online,2020-09-18,smart
+MTR-0097,CUST-1044,Bibi-Heybat,40.308133,49.822941,active,4003.4,intermittent,2018-02-08,smart
+MTR-0098,CUST-1045,Heydar Aliyev Zone,40.412614,49.857622,error,9892.8,intermittent,2018-03-16,commercial
+MTR-0099,CUST-1046,Buzovna,40.564545,50.112482,active,5343.4,online,2018-08-12,commercial
+MTR-0100,CUST-1047,Khirdalan,40.447999,49.760104,active,5057.4,online,2020-11-13,commercial
+MTR-0101,CUST-1048,Balakhani,40.451101,49.922642,active,1567.9,online,2021-09-27,residential
+MTR-0102,CUST-1049,Nasimi District,40.37973,49.843278,active,2413.5,online,2022-08-21,smart
+MTR-0103,CUST-1050,Baku Industrial Zone,40.3478,49.851107,active,11146.5,online,2023-08-04,smart
+MTR-0104,CUST-1051,Yasamal District,40.397194,49.838266,active,2068.9,online,2018-09-14,commercial
+MTR-0105,CUST-1052,Surakhani District,40.423741,49.955242,active,11375.3,online,2024-03-16,industrial
+MTR-0106,CUST-1053,Ganja North,40.692266,46.363203,active,3076.0,online,2019-07-07,commercial
+MTR-0107,CUST-1001,Bayil District,40.353247,49.85238,active,9317.6,online,2020-09-09,smart
+MTR-0108,CUST-1002,Nasimi District,40.368485,49.835957,active,11987.0,online,2024-03-15,commercial
+MTR-0109,CUST-1003,Ramana,40.44953,49.904973,error,4651.1,offline,2024-04-23,smart
+MTR-0110,CUST-1004,Sumqayit Central,40.592154,49.617007,error,715.0,offline,2021-12-26,residential
+MTR-0111,CUST-1005,Barda,40.371582,47.142911,warning,6044.9,intermittent,2019-09-19,smart
+MTR-0112,CUST-1006,Lankaran,38.764091,48.862226,active,6406.2,online,2018-12-05,smart
+MTR-0113,CUST-1007,Khirdalan,40.464128,49.769099,active,9422.0,online,2020-10-23,smart
+MTR-0114,CUST-1008,Masazir,40.499495,49.770553,warning,4684.1,intermittent,2023-12-25,smart
+MTR-0115,CUST-1009,Bibi-Heybat,40.321171,49.806077,active,7647.7,online,2019-12-03,smart
+MTR-0116,CUST-1010,Absheron East,40.43435,49.987811,inactive,5435.4,offline,2020-01-02,industrial
+MTR-0117,CUST-1011,Shirvan Central,39.946884,48.913801,active,1917.7,online,2021-10-22,commercial
+MTR-0118,CUST-1012,Nizami District,40.3661,49.815369,active,8261.0,online,2022-03-08,commercial
+MTR-0119,CUST-1013,Baku Commercial Hub,40.399137,49.868787,warning,10807.1,intermittent,2020-11-18,smart
+MTR-0120,CUST-1014,Khazar District,40.500216,50.013357,active,7739.5,online,2023-05-15,smart
+MTR-0121,CUST-1015,Ganja South,40.665977,46.336541,active,2999.0,online,2020-10-10,commercial
+MTR-0122,CUST-1016,Ganja North,40.677658,46.379901,active,295.6,online,2024-12-02,industrial
+MTR-0123,CUST-1017,Bayil District,40.360355,49.850985,active,9626.5,intermittent,2024-06-08,commercial
+MTR-0124,CUST-1018,Lokbatan,40.323627,49.755333,inactive,7978.3,offline,2023-02-21,smart
+MTR-0125,CUST-1019,Sabail District,40.357268,49.832225,active,8841.8,online,2020-06-24,smart
+MTR-0126,CUST-1020,Khirdalan,40.443269,49.743965,active,6464.1,online,2024-03-09,smart
+MTR-0127,CUST-1021,Old Town Baku,40.380022,49.830854,active,5726.3,online,2019-04-28,smart
+MTR-0128,CUST-1022,Masazir,40.509018,49.769138,active,9530.0,online,2020-09-04,smart
+MTR-0129,CUST-1023,Baku Commercial Hub,40.391058,49.87747,active,4696.1,online,2020-02-22,industrial
+MTR-0130,CUST-1024,Sumqayit South,40.576144,49.621586,active,11000.0,online,2023-02-21,smart
+MTR-0131,CUST-1025,Baku Commercial Hub,40.407282,49.864066,active,1849.4,online,2020-08-04,smart
+MTR-0132,CUST-1026,Narimanov District,40.405044,49.866126,active,4577.9,online,2023-09-14,residential
+MTR-0133,CUST-1027,Port Authority,40.362268,49.844636,active,1368.5,online,2022-07-09,commercial
+MTR-0134,CUST-1028,Sabail District,40.368708,49.825518,active,10294.3,online,2023-06-18,smart
+MTR-0135,CUST-1029,Sheki,41.176817,47.163276,active,1281.7,online,2023-11-20,smart
+MTR-0136,CUST-1030,Yasamal District,40.369517,49.830005,active,2621.4,online,2022-04-19,residential
+MTR-0137,CUST-1031,Sumqayit North,40.607392,49.62399,error,9506.0,offline,2018-05-28,commercial
+MTR-0138,CUST-1032,Pirallahi District,40.499626,50.051206,active,8000.5,online,2019-01-12,smart
+MTR-0139,CUST-1033,Sumqayit Central,40.592666,49.610473,active,1695.8,online,2022-02-24,smart
+MTR-0140,CUST-1034,Binagadi District,40.447287,49.826341,active,1486.8,online,2019-10-02,commercial
+MTR-0141,CUST-1035,Buzovna,40.554049,50.1043,active,11983.3,online,2021-11-04,smart
+MTR-0142,CUST-1036,Bibi-Heybat,40.316372,49.818307,active,7377.9,online,2019-05-20,smart
+MTR-0143,CUST-1037,Port Authority,40.356451,49.849756,active,3679.8,online,2022-07-04,commercial
+MTR-0144,CUST-1038,Sabunchi District,40.452584,49.931527,error,8705.9,offline,2021-08-08,smart
+MTR-0145,CUST-1039,Khirdalan,40.448168,49.753605,active,1322.0,intermittent,2020-11-09,smart
+MTR-0146,CUST-1040,Shamakhi,40.643608,48.645605,active,1276.5,online,2018-07-04,smart
+MTR-0147,CUST-1041,Shamakhi,40.639353,48.641691,active,6827.9,online,2018-07-12,industrial
+MTR-0148,CUST-1042,Absheron East,40.431043,49.986632,active,3886.9,online,2022-09-07,smart
+MTR-0149,CUST-1043,Pirallahi District,40.489702,50.041727,active,10175.4,online,2018-05-19,smart
+MTR-0150,CUST-1044,Sumqayit South,40.586217,49.628355,error,7440.2,offline,2022-01-20,industrial
+MTR-0151,CUST-1045,Mingachevir West,40.740869,47.033198,error,11074.1,offline,2018-03-28,smart
+MTR-0152,CUST-1046,Pirallahi District,40.48699,50.047024,active,7671.4,intermittent,2018-12-17,smart
+MTR-0153,CUST-1047,Sumqayit North,40.594286,49.630609,active,3877.3,online,2024-10-20,smart
+MTR-0154,CUST-1048,Surakhani District,40.4435,49.934667,error,787.2,offline,2020-08-22,smart
+MTR-0155,CUST-1049,Absheron East,40.41957,49.978261,active,9108.3,online,2020-07-04,smart
+MTR-0156,CUST-1050,Ganja North,40.697347,46.372794,active,3839.3,online,2021-10-02,smart
+MTR-0157,CUST-1051,Nasimi District,40.366133,49.85536,error,9217.1,offline,2020-02-01,smart
+MTR-0158,CUST-1052,Bibi-Heybat,40.31741,49.810271,active,8503.3,online,2022-11-26,commercial
+MTR-0159,CUST-1053,Sheki,41.177162,47.180853,active,421.2,online,2024-06-19,smart
+MTR-0160,CUST-1001,Absheron East,40.422202,49.986285,active,1559.0,online,2020-03-26,smart
+MTR-0161,CUST-1002,Seaside Terminal,40.358803,49.855688,active,5353.2,online,2019-07-19,smart
+MTR-0162,CUST-1003,Masazir,40.495719,49.756873,active,4206.3,intermittent,2024-03-03,smart
+MTR-0163,CUST-1004,Mashtaga,40.538997,50.010918,active,4322.6,intermittent,2024-11-27,industrial
+MTR-0164,CUST-1005,Pirallahi District,40.477088,50.039393,active,7308.3,online,2024-11-03,residential
+MTR-0165,CUST-1006,Nizami District,40.389539,49.831838,active,6852.1,intermittent,2021-11-19,commercial
+MTR-0166,CUST-1007,Seaside Terminal,40.354696,49.864129,active,5389.2,online,2021-11-10,commercial
+MTR-0167,CUST-1008,Mingachevir West,40.757743,47.035558,active,5648.6,online,2018-06-27,smart
+MTR-0168,CUST-1009,Ganja North,40.679302,46.380928,active,7210.1,online,2021-10-18,smart
+MTR-0169,CUST-1010,Sabail District,40.361492,49.843294,warning,3994.0,intermittent,2022-03-02,commercial
+MTR-0170,CUST-1011,Baku Industrial Zone,40.328105,49.871974,active,1195.1,online,2019-01-08,industrial
+MTR-0171,CUST-1012,Baku Industrial Zone,40.35473,49.860722,active,4494.0,online,2021-07-25,smart
+MTR-0172,CUST-1013,Lankaran,38.758367,48.837571,warning,4148.9,online,2018-09-22,smart
+MTR-0173,CUST-1014,Barda,40.368524,47.144712,warning,10504.7,online,2018-10-22,smart
+MTR-0174,CUST-1015,Pirallahi District,40.497502,50.044307,warning,8013.2,online,2022-12-03,smart
+MTR-0175,CUST-1016,Ganja South,40.676768,46.344305,active,8107.4,online,2023-09-03,industrial
+MTR-0176,CUST-1017,Absheron East,40.420255,49.965547,active,11423.8,online,2024-08-07,smart
+MTR-0177,CUST-1018,Sumqayit South,40.591999,49.607648,active,6190.7,online,2024-12-17,commercial
+MTR-0178,CUST-1019,Sabail District,40.367858,49.845292,active,7247.5,online,2019-03-27,smart
+MTR-0179,CUST-1020,Seaside Terminal,40.369271,49.839966,active,5048.1,online,2023-04-15,industrial
+MTR-0180,CUST-1021,Seaside Terminal,40.353548,49.857456,active,6501.3,online,2024-08-27,smart
+MTR-0181,CUST-1022,Lokbatan,40.316035,49.763414,active,9279.4,online,2021-09-17,residential
+MTR-0182,CUST-1023,Khirdalan,40.466988,49.764507,active,10501.4,online,2023-08-28,smart
+MTR-0183,CUST-1024,Shamakhi,40.631636,48.628078,active,3563.7,online,2019-05-15,residential
+MTR-0184,CUST-1025,Mashtaga,40.52442,50.008124,active,10638.6,online,2021-01-13,smart
+MTR-0185,CUST-1026,Mashtaga,40.531219,50.006585,active,2849.6,online,2018-12-21,smart
+MTR-0186,CUST-1027,Lankaran,38.761741,48.840128,active,8413.6,online,2024-12-16,smart
+MTR-0187,CUST-1028,Baku Industrial Zone,40.34346,49.872176,active,2744.7,online,2022-12-20,smart
+MTR-0188,CUST-1029,Buzovna,40.557698,50.108285,active,1637.8,online,2021-11-26,smart
+MTR-0189,CUST-1030,Seaside Terminal,40.358713,49.838326,active,6525.4,online,2022-10-08,industrial
+MTR-0190,CUST-1031,Pirallahi District,40.478738,50.035047,active,6933.8,online,2023-11-03,smart
+MTR-0191,CUST-1032,Buzovna,40.57424,50.08703,active,6186.5,online,2022-01-13,commercial
+MTR-0192,CUST-1033,Old Town Baku,40.352306,49.833606,active,9018.3,online,2024-02-12,smart
+MTR-0193,CUST-1034,Sumqayit Central,40.596988,49.628848,error,8875.2,offline,2019-01-12,smart
+MTR-0194,CUST-1035,Ramana,40.445156,49.914284,error,5682.6,intermittent,2021-11-06,industrial
+MTR-0195,CUST-1036,Qaradag District,40.298893,49.998286,active,3662.6,online,2024-04-02,smart
+MTR-0196,CUST-1037,Shirvan Central,39.951001,48.920462,active,3189.1,online,2023-04-10,residential
+MTR-0197,CUST-1038,Sheki,41.200864,47.156434,warning,3424.0,intermittent,2021-07-24,smart
+MTR-0198,CUST-1039,Baku Industrial Zone,40.351839,49.856599,active,8366.4,online,2024-09-09,smart
+MTR-0199,CUST-1040,Surakhani District,40.438812,49.932368,active,6636.6,online,2018-02-11,smart
+MTR-0200,CUST-1041,Ganja North,40.686195,46.373079,active,8339.2,online,2021-01-24,smart
+MTR-0201,CUST-1042,Sheki,41.193446,47.168048,warning,1085.5,intermittent,2021-06-17,industrial
+MTR-0202,CUST-1043,Khazar District,40.526584,49.989283,active,9419.5,online,2019-02-08,smart
+MTR-0203,CUST-1044,Shamakhi,40.625865,48.653484,active,2010.6,online,2020-06-15,smart
+MTR-0204,CUST-1045,Binagadi District,40.450218,49.818884,active,7864.8,online,2018-01-24,smart
+MTR-0205,CUST-1046,Nizami District,40.375971,49.82461,active,3289.0,online,2023-08-07,smart
+MTR-0206,CUST-1047,Seaside Terminal,40.353567,49.862494,active,1647.1,online,2021-03-23,smart
+MTR-0207,CUST-1048,Baku Industrial Zone,40.354918,49.869315,active,4299.6,online,2022-09-10,smart
+MTR-0208,CUST-1049,Ganja South,40.685541,46.346354,warning,2254.3,online,2022-04-04,smart
+MTR-0209,CUST-1050,Lokbatan,40.328762,49.742102,active,4458.6,online,2020-08-26,commercial
+MTR-0210,CUST-1051,Balakhani,40.453893,49.946527,active,4898.3,online,2023-08-17,industrial
+MTR-0211,CUST-1052,Khirdalan,40.461075,49.7647,active,11674.1,online,2018-08-15,industrial
+MTR-0212,CUST-1053,Buzovna,40.555335,50.111339,error,7749.6,offline,2024-03-14,smart
+MTR-0213,CUST-1001,Mashtaga,40.547321,49.996662,active,2005.6,online,2019-06-23,smart
+MTR-0214,CUST-1002,Sumqayit South,40.572381,49.631227,active,3157.1,online,2022-05-05,industrial
+MTR-0215,CUST-1003,Ganja South,40.678433,46.327803,warning,7183.3,intermittent,2019-03-22,commercial
+MTR-0216,CUST-1004,Seaside Terminal,40.366619,49.853154,active,9937.8,online,2018-01-21,smart
+MTR-0217,CUST-1005,Heydar Aliyev Zone,40.40294,49.863324,active,7493.7,online,2021-11-18,smart
+MTR-0218,CUST-1006,Ganja North,40.696257,46.364063,active,4991.9,online,2018-12-02,smart
+MTR-0219,CUST-1007,Khazar District,40.511188,49.999528,active,7358.6,online,2024-12-11,smart
+MTR-0220,CUST-1008,Sheki,41.204261,47.158923,active,6827.5,online,2019-08-04,smart
+MTR-0221,CUST-1009,Mingachevir West,40.753488,47.029226,active,11355.5,online,2021-04-28,commercial
+MTR-0222,CUST-1010,Khazar District,40.522404,50.013013,inactive,2440.0,offline,2021-09-15,smart
+MTR-0223,CUST-1011,Bibi-Heybat,40.321372,49.819921,active,6164.2,online,2019-10-12,smart
+MTR-0224,CUST-1012,Khatai District,40.376516,49.879847,warning,5752.9,online,2018-02-14,commercial
+MTR-0225,CUST-1013,Qaradag District,40.323474,49.996825,error,4518.1,offline,2018-10-18,smart
+MTR-0226,CUST-1014,Lokbatan,40.315876,49.743658,active,5514.2,online,2020-10-22,commercial
+MTR-0227,CUST-1015,Seaside Terminal,40.348564,49.864252,active,9579.8,online,2022-06-25,smart
+MTR-0228,CUST-1016,Pirallahi District,40.475972,50.050274,active,734.6,online,2023-06-26,smart
+MTR-0229,CUST-1017,Old Town Baku,40.36658,49.826468,active,4070.0,online,2020-03-13,commercial
+MTR-0230,CUST-1018,Seaside Terminal,40.36718,49.843977,active,9973.8,online,2021-12-19,commercial
+MTR-0231,CUST-1019,Ganja South,40.674247,46.325499,active,1493.3,online,2022-05-26,smart
+MTR-0232,CUST-1020,Yasamal District,40.385907,49.827966,warning,7026.0,online,2023-01-19,smart
+MTR-0233,CUST-1021,Old Town Baku,40.356115,49.840871,active,10125.8,intermittent,2024-11-08,smart
+MTR-0234,CUST-1022,Sabail District,40.365177,49.840016,active,5404.3,online,2019-07-23,smart
+MTR-0235,CUST-1023,Sumqayit North,40.595311,49.640249,active,8783.3,intermittent,2019-09-07,industrial
+MTR-0236,CUST-1024,Balakhani,40.459751,49.939867,active,3902.3,online,2021-09-11,smart
+MTR-0237,CUST-1025,Ramana,40.445629,49.91816,inactive,7791.0,offline,2020-10-16,industrial
+MTR-0238,CUST-1026,Lokbatan,40.33372,49.74337,active,11309.5,online,2024-05-23,smart
+MTR-0239,CUST-1027,Sumqayit North,40.603707,49.63167,active,6813.8,online,2020-05-04,industrial
+MTR-0240,CUST-1028,Heydar Aliyev Zone,40.415299,49.868391,active,11464.4,online,2020-01-10,smart
+MTR-0241,CUST-1029,Surakhani District,40.427391,49.943271,active,5853.1,intermittent,2024-09-09,smart
+MTR-0242,CUST-1030,Balakhani,40.470885,49.924118,active,7124.6,intermittent,2018-11-17,smart
+MTR-0243,CUST-1031,Sumqayit South,40.581138,49.604575,active,8664.8,online,2023-03-01,smart
+MTR-0244,CUST-1032,Balakhani,40.479337,49.924738,warning,5833.9,intermittent,2024-05-11,smart
+MTR-0245,CUST-1033,Ganja North,40.696377,46.382238,active,6974.8,online,2023-12-28,commercial
+MTR-0246,CUST-1034,Sabail District,40.375397,49.824252,active,11966.6,online,2024-08-06,smart
+MTR-0247,CUST-1035,Ganja North,40.703302,46.355278,active,1466.1,online,2020-08-21,smart
+MTR-0248,CUST-1036,Ramana,40.45073,49.921678,active,5722.6,online,2024-02-11,smart
+MTR-0249,CUST-1037,Khazar District,40.519934,50.004449,inactive,366.2,offline,2024-05-19,smart
+MTR-0250,CUST-1038,Lokbatan,40.310265,49.760684,active,6280.3,online,2021-11-04,smart
+MTR-0251,CUST-1039,Nizami District,40.390451,49.827324,active,3277.3,online,2021-05-11,smart
+MTR-0252,CUST-1040,Ganja South,40.677474,46.342186,active,4442.7,online,2018-11-04,smart
+MTR-0253,CUST-1041,Baku Commercial Hub,40.389204,49.867162,active,9284.1,online,2018-11-10,industrial
+MTR-0254,CUST-1042,Shamakhi,40.633439,48.631574,active,2007.6,online,2022-06-14,residential
+MTR-0255,CUST-1043,Balakhani,40.477384,49.942721,warning,9189.9,intermittent,2024-10-28,industrial
+MTR-0256,CUST-1044,Surakhani District,40.432765,49.945845,active,11023.5,online,2018-09-17,smart
+MTR-0257,CUST-1045,Lokbatan,40.322181,49.739496,active,5413.7,online,2019-12-19,industrial
+MTR-0258,CUST-1046,Bibi-Heybat,40.297728,49.820311,active,1756.9,online,2021-10-02,smart
+MTR-0259,CUST-1047,Balakhani,40.463871,49.944207,inactive,4872.2,offline,2023-04-19,smart
+MTR-0260,CUST-1048,Binagadi District,40.434359,49.813336,active,11930.7,online,2021-01-10,smart
+MTR-0261,CUST-1049,Khirdalan,40.443399,49.744063,warning,7821.4,online,2020-07-15,smart
+MTR-0262,CUST-1050,Barda,40.371269,47.143482,warning,1769.3,intermittent,2018-03-18,smart
+MTR-0263,CUST-1051,Masazir,40.495865,49.766836,active,9122.9,online,2021-11-24,smart
+MTR-0264,CUST-1052,Ramana,40.447724,49.906378,active,5635.4,online,2020-04-24,smart
+MTR-0265,CUST-1053,Sabunchi District,40.427967,49.931806,active,11247.6,intermittent,2019-04-03,smart
+MTR-0266,CUST-1001,Narimanov District,40.415818,49.863393,warning,10492.1,online,2023-01-13,smart
+MTR-0267,CUST-1002,Baku Industrial Zone,40.33203,49.851518,error,1853.6,offline,2019-12-19,smart
+MTR-0268,CUST-1003,Shirvan Central,39.940324,48.928176,active,3760.8,online,2023-09-08,smart
+MTR-0269,CUST-1004,Khirdalan,40.447015,49.741829,active,10956.6,intermittent,2023-07-18,industrial
+MTR-0270,CUST-1005,Bibi-Heybat,40.296407,49.815332,warning,4697.6,online,2020-12-14,commercial
+MTR-0271,CUST-1006,Khirdalan,40.442477,49.751294,error,5787.5,offline,2020-12-05,smart
+MTR-0272,CUST-1007,Baku Commercial Hub,40.407442,49.871872,active,6453.9,online,2019-05-07,smart
+MTR-0273,CUST-1008,Lankaran,38.757401,48.863667,active,6520.5,online,2018-05-13,smart
+MTR-0274,CUST-1009,Bayil District,40.356088,49.852209,active,7133.5,intermittent,2022-04-16,industrial
+MTR-0275,CUST-1010,Sumqayit North,40.609084,49.626989,active,11258.5,online,2018-12-25,industrial
+MTR-0276,CUST-1011,Old Town Baku,40.378433,49.842869,inactive,4880.3,offline,2022-06-25,smart
+MTR-0277,CUST-1012,Ganja North,40.68842,46.37101,active,3286.4,online,2021-08-04,commercial
+MTR-0278,CUST-1013,Old Town Baku,40.373849,49.831607,active,3892.5,online,2022-04-24,smart
+MTR-0279,CUST-1014,Pirallahi District,40.470487,50.051599,active,8696.1,online,2019-04-11,smart
+MTR-0280,CUST-1015,Sumqayit South,40.573395,49.628001,active,7924.4,online,2020-05-25,industrial
+MTR-0281,CUST-1016,Bibi-Heybat,40.323995,49.824251,active,2185.2,online,2019-03-24,smart
+MTR-0282,CUST-1017,Ramana,40.449649,49.922507,active,11495.4,online,2018-02-27,commercial
+MTR-0283,CUST-1018,Khatai District,40.39793,49.877372,warning,1002.0,intermittent,2018-04-17,smart
+MTR-0284,CUST-1019,Baku Commercial Hub,40.391196,49.873535,warning,10970.5,online,2021-01-01,industrial
+MTR-0285,CUST-1020,Ramana,40.451549,49.895356,active,3441.9,intermittent,2018-09-27,smart
+MTR-0286,CUST-1021,Absheron East,40.429185,49.992293,active,6387.7,online,2019-10-17,smart
+MTR-0287,CUST-1022,Mingachevir East,40.777456,47.07302,active,4602.0,online,2021-10-08,smart
+MTR-0288,CUST-1023,Sumqayit South,40.570999,49.627842,active,11901.8,online,2024-01-03,industrial
+MTR-0289,CUST-1024,Masazir,40.491378,49.761581,active,311.5,online,2018-08-28,smart
+MTR-0290,CUST-1025,Absheron East,40.424347,49.974938,active,11046.0,online,2019-12-19,smart
+MTR-0291,CUST-1026,Old Town Baku,40.359133,49.849725,warning,10811.9,intermittent,2023-01-06,commercial
+MTR-0292,CUST-1027,Shirvan Central,39.92347,48.911215,active,9884.2,intermittent,2018-05-06,smart
+MTR-0293,CUST-1028,Heydar Aliyev Zone,40.402214,49.88204,active,10779.0,online,2021-12-05,smart
+MTR-0294,CUST-1029,Surakhani District,40.432024,49.95923,active,5357.6,online,2020-10-25,smart
+MTR-0295,CUST-1030,Seaside Terminal,40.373646,49.846901,error,549.6,offline,2024-08-16,smart
+MTR-0296,CUST-1031,Sumqayit South,40.572674,49.631234,active,8220.4,online,2021-02-25,industrial
+MTR-0297,CUST-1032,Seaside Terminal,40.353861,49.842393,active,3362.1,online,2023-11-05,smart
+MTR-0298,CUST-1033,Barda,40.3695,47.126197,active,5447.9,online,2020-02-05,residential
+MTR-0299,CUST-1034,Surakhani District,40.422622,49.943465,active,5014.9,online,2018-06-18,smart
+MTR-0300,CUST-1035,Surakhani District,40.434908,49.953533,active,3643.8,online,2024-02-24,smart
+MTR-0301,CUST-1036,Balakhani,40.477156,49.949345,active,2201.1,online,2019-03-09,smart
+MTR-0302,CUST-1037,Ganja South,40.668052,46.329378,active,3456.4,online,2021-02-12,smart
+MTR-0303,CUST-1038,Mingachevir East,40.781327,47.086627,active,7476.7,online,2018-03-10,smart
+MTR-0304,CUST-1039,Nasimi District,40.388465,49.836967,active,9688.1,online,2021-06-14,smart
+MTR-0305,CUST-1040,Bayil District,40.342084,49.83562,warning,5852.3,intermittent,2021-06-10,smart
+MTR-0306,CUST-1041,Bibi-Heybat,40.324033,49.828459,active,3507.5,online,2020-02-19,smart
+MTR-0307,CUST-1042,Lokbatan,40.322767,49.751369,warning,6691.2,online,2021-12-07,industrial
+MTR-0308,CUST-1043,Baku Industrial Zone,40.348931,49.869938,active,8141.1,online,2023-05-08,smart
+MTR-0309,CUST-1044,Mingachevir East,40.77276,47.086457,active,5499.0,online,2021-10-13,commercial
+MTR-0310,CUST-1045,Ramana,40.450198,49.922612,warning,6615.0,intermittent,2023-09-20,smart
+MTR-0311,CUST-1046,Surakhani District,40.420281,49.937447,warning,2162.8,intermittent,2018-10-21,commercial
+MTR-0312,CUST-1047,Masazir,40.509004,49.754948,active,324.5,online,2019-09-24,smart
+MTR-0313,CUST-1048,Buzovna,40.56174,50.10563,active,4614.6,online,2024-11-19,smart
+MTR-0314,CUST-1049,Mashtaga,40.524522,50.024931,active,3686.1,online,2018-12-05,smart
+MTR-0315,CUST-1050,Sheki,41.184357,47.16866,active,5898.5,online,2018-08-24,commercial
+MTR-0316,CUST-1051,Baku Industrial Zone,40.334567,49.854008,inactive,466.5,offline,2023-02-22,smart
+MTR-0317,CUST-1052,Khazar District,40.525898,50.007215,active,6712.5,online,2022-07-15,smart
+MTR-0318,CUST-1053,Sumqayit South,40.585933,49.621893,active,7956.2,online,2018-12-20,smart
+MTR-0319,CUST-1001,Lokbatan,40.318487,49.747887,active,2734.6,online,2024-12-26,smart
+MTR-0320,CUST-1002,Binagadi District,40.45032,49.826985,active,4516.4,online,2021-02-09,smart
+MTR-0321,CUST-1003,Bibi-Heybat,40.310831,49.824173,active,7413.4,online,2018-06-12,commercial
+MTR-0322,CUST-1004,Baku Commercial Hub,40.398521,49.879412,inactive,11040.5,offline,2018-11-05,commercial
+MTR-0323,CUST-1005,Shirvan Central,39.926536,48.914161,active,8382.6,online,2021-07-20,commercial
+MTR-0324,CUST-1006,Qaradag District,40.314244,49.987691,active,6541.1,online,2019-09-06,industrial
+MTR-0325,CUST-1007,Bibi-Heybat,40.303665,49.810613,active,832.6,online,2018-08-05,smart
+MTR-0326,CUST-1008,Lokbatan,40.329456,49.763915,active,6040.6,online,2021-07-23,industrial
+MTR-0327,CUST-1009,Baku Industrial Zone,40.339661,49.84748,active,2802.2,intermittent,2020-04-18,smart
+MTR-0328,CUST-1010,Ganja North,40.682046,46.36872,inactive,9237.9,offline,2022-02-19,commercial
+MTR-0329,CUST-1011,Sabunchi District,40.435037,49.928293,active,9906.8,online,2024-12-15,smart
+MTR-0330,CUST-1012,Ramana,40.441556,49.907755,inactive,9065.9,offline,2024-01-15,smart
+MTR-0331,CUST-1013,Mingachevir East,40.763457,47.089502,active,9352.5,online,2019-12-19,smart
+MTR-0332,CUST-1014,Sheki,41.200831,47.173308,active,7470.6,online,2024-04-26,smart
+MTR-0333,CUST-1015,Khatai District,40.392102,49.880968,active,2186.9,online,2020-05-19,industrial
+MTR-0334,CUST-1016,Mingachevir West,40.768572,47.040432,warning,1799.9,intermittent,2024-07-02,residential
+MTR-0335,CUST-1017,Mingachevir West,40.766011,47.028807,active,1925.7,online,2024-04-25,smart
+MTR-0336,CUST-1018,Masazir,40.494684,49.762323,active,5087.9,online,2018-11-26,smart
+MTR-0337,CUST-1019,Surakhani District,40.429086,49.952494,warning,5565.4,intermittent,2020-10-01,commercial
+MTR-0338,CUST-1020,Surakhani District,40.438928,49.943753,warning,4427.0,online,2024-09-13,smart
+MTR-0339,CUST-1021,Sumqayit North,40.612044,49.641745,active,4009.8,online,2020-09-19,smart
+MTR-0340,CUST-1022,Qaradag District,40.313984,49.98956,active,9194.6,online,2018-11-26,smart
+MTR-0341,CUST-1023,Baku Commercial Hub,40.380488,49.882883,active,5586.9,online,2019-12-05,smart
+MTR-0342,CUST-1024,Ganja South,40.664769,46.352982,active,7924.1,online,2018-06-22,smart
+MTR-0343,CUST-1025,Khazar District,40.499554,50.003768,inactive,9111.7,offline,2023-02-23,smart
+MTR-0344,CUST-1026,Narimanov District,40.398033,49.864304,active,2869.1,online,2021-01-01,industrial
+MTR-0345,CUST-1027,Lankaran,38.762513,48.865645,active,1759.7,online,2019-07-03,smart
+MTR-0346,CUST-1028,Narimanov District,40.401096,49.861027,active,4716.1,online,2024-03-21,residential
+MTR-0347,CUST-1029,Pirallahi District,40.472052,50.051899,active,2136.6,online,2023-04-21,smart
+MTR-0348,CUST-1030,Pirallahi District,40.497597,50.053482,active,1222.9,online,2019-02-19,smart
+MTR-0349,CUST-1031,Barda,40.370546,47.135882,active,3468.2,online,2019-09-20,smart
+MTR-0350,CUST-1032,Bayil District,40.359635,49.834548,warning,10205.1,intermittent,2020-04-17,industrial
+MTR-0351,CUST-1033,Bayil District,40.353286,49.848435,active,843.9,online,2021-07-04,smart
+MTR-0352,CUST-1034,Sumqayit Central,40.589987,49.627818,active,11845.2,online,2019-07-28,smart
+MTR-0353,CUST-1035,Heydar Aliyev Zone,40.407626,49.873391,active,5758.0,intermittent,2018-01-19,residential
+MTR-0354,CUST-1036,Binagadi District,40.433414,49.809472,active,6178.0,online,2023-09-25,industrial
+MTR-0355,CUST-1037,Khirdalan,40.450707,49.752068,warning,6544.3,intermittent,2020-02-10,smart
+MTR-0356,CUST-1038,Surakhani District,40.432339,49.936096,active,4055.7,online,2023-11-22,commercial
+MTR-0357,CUST-1039,Binagadi District,40.442305,49.816125,active,3084.9,online,2018-08-20,smart
+MTR-0358,CUST-1040,Bayil District,40.339651,49.845982,warning,2272.6,online,2023-03-23,smart
+MTR-0359,CUST-1041,Nasimi District,40.364915,49.85559,active,9439.2,online,2020-03-12,industrial
+MTR-0360,CUST-1042,Qaradag District,40.319493,50.001204,inactive,9302.9,offline,2020-07-09,smart
+MTR-0361,CUST-1043,Buzovna,40.546916,50.10637,active,1109.4,online,2022-06-02,smart
+MTR-0362,CUST-1044,Bibi-Heybat,40.320781,49.810006,active,9325.3,online,2023-12-04,commercial
+MTR-0363,CUST-1045,Sumqayit South,40.584223,49.603077,active,742.6,online,2021-03-06,smart
+MTR-0364,CUST-1046,Sabail District,40.364586,49.846418,inactive,5148.6,offline,2019-07-24,smart
+MTR-0365,CUST-1047,Shirvan Central,39.931138,48.907337,active,6124.1,online,2019-04-26,smart
+MTR-0366,CUST-1048,Buzovna,40.574442,50.113622,active,10419.2,online,2024-05-11,residential
+MTR-0367,CUST-1049,Surakhani District,40.433593,49.930239,active,6852.9,online,2023-10-08,smart
+MTR-0368,CUST-1050,Baku Commercial Hub,40.391048,49.884156,error,2506.0,intermittent,2024-04-05,commercial
+MTR-0369,CUST-1051,Nasimi District,40.387972,49.827717,active,7704.1,online,2018-06-01,industrial
+MTR-0370,CUST-1052,Barda,40.38547,47.144816,active,6451.8,online,2021-08-02,smart
+MTR-0371,CUST-1053,Pirallahi District,40.49135,50.037791,active,5074.1,online,2021-12-03,smart
+MTR-0372,CUST-1001,Port Authority,40.342867,49.844005,active,7184.4,online,2021-11-05,smart
+MTR-0373,CUST-1002,Sumqayit Central,40.58375,49.635527,active,10016.4,online,2020-08-09,smart
+MTR-0374,CUST-1003,Sumqayit South,40.564241,49.609081,error,7099.6,intermittent,2018-03-15,smart
+MTR-0375,CUST-1004,Baku Commercial Hub,40.389421,49.858622,active,2650.1,intermittent,2021-05-28,smart
+MTR-0376,CUST-1005,Sabunchi District,40.429713,49.936228,active,8423.2,online,2019-06-05,smart
+MTR-0377,CUST-1006,Surakhani District,40.438335,49.959052,active,777.6,online,2020-03-01,smart
+MTR-0378,CUST-1007,Masazir,40.505638,49.761679,active,1317.8,online,2024-03-04,smart
+MTR-0379,CUST-1008,Nasimi District,40.36185,49.850429,active,2538.0,online,2020-11-21,smart
+MTR-0380,CUST-1009,Surakhani District,40.43447,49.937765,active,11966.5,online,2023-08-26,smart
+MTR-0381,CUST-1010,Qaradag District,40.299759,50.000418,active,703.8,online,2018-03-19,smart
+MTR-0382,CUST-1011,Absheron East,40.429651,49.97685,active,8261.9,online,2020-04-06,smart
+MTR-0383,CUST-1012,Mingachevir West,40.748396,47.051503,active,7506.3,online,2023-05-16,smart
+MTR-0384,CUST-1013,Khirdalan,40.464483,49.754371,active,4719.6,online,2019-11-26,smart
+MTR-0385,CUST-1014,Buzovna,40.552474,50.114823,active,11875.0,online,2020-08-18,industrial
+MTR-0386,CUST-1015,Bibi-Heybat,40.305321,49.82197,active,3391.1,online,2020-10-08,smart
+MTR-0387,CUST-1016,Yasamal District,40.394873,49.843356,active,6447.3,online,2022-04-06,residential
+MTR-0388,CUST-1017,Narimanov District,40.405436,49.857235,active,859.7,intermittent,2022-07-12,smart
+MTR-0389,CUST-1018,Nizami District,40.366283,49.830776,inactive,4433.6,offline,2018-12-23,commercial
+MTR-0390,CUST-1019,Sheki,41.203427,47.171908,active,10073.0,online,2022-05-06,commercial
+MTR-0391,CUST-1020,Bibi-Heybat,40.296139,49.806685,active,435.2,online,2018-06-20,commercial
+MTR-0392,CUST-1021,Lokbatan,40.329193,49.745223,active,902.8,online,2022-12-05,smart
+MTR-0393,CUST-1022,Sabunchi District,40.452394,49.93782,active,8513.5,online,2021-10-04,industrial
+MTR-0394,CUST-1023,Lankaran,38.747053,48.840094,active,11394.6,intermittent,2021-11-11,industrial
+MTR-0395,CUST-1024,Nizami District,40.382215,49.829859,active,2834.2,online,2024-03-13,commercial
+MTR-0396,CUST-1025,Ganja South,40.68202,46.333836,active,221.2,intermittent,2022-07-28,industrial
+MTR-0397,CUST-1026,Heydar Aliyev Zone,40.395971,49.875072,active,7747.8,online,2021-03-11,smart
+MTR-0398,CUST-1027,Binagadi District,40.44014,49.832471,active,10646.8,online,2024-12-22,smart
+MTR-0399,CUST-1028,Lankaran,38.751399,48.843956,active,1000.0,online,2024-02-24,smart
+MTR-0400,CUST-1029,Nasimi District,40.361444,49.840147,active,10637.7,online,2021-06-18,commercial

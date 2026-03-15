@@ -1,0 +1,6 @@
+crew_id,latitude,longitude,status,base_city
+CRW-A,40.43,49.89,available,Baku
+CRW-B,40.58,49.65,assigned,Sumqayit
+CRW-C,40.69,46.39,assigned,Ganja
+CRW-D,40.77,47.02,available,Mingachevir
+CRW-E,38.77,48.88,emergency,Lankaran

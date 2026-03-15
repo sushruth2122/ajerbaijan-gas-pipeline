@@ -97,15 +97,19 @@ write('revenue/tampering-alerts.json',      d.tamperingAlerts);
 
 // ── Safety ─────────────────────────────────────────────────────────────────
 write('safety.json', {
-  kpis:           d.safetyKpis,
-  pressureTrends: d.gasPressureTrends,
-  leakDetection:  d.leakDetectionActivity,
-  alerts:         d.safetyAlerts,
+  kpis:              d.safetyKpis,
+  pressureTrends:    d.gasPressureTrends,
+  leakDetection:     d.leakDetectionActivity,
+  alerts:            d.safetyAlerts,
+  emergencyResponse: d.emergencyResponse,
+  emergencyKpis:     d.emergencyKpis,
 });
-write('safety/kpis.json',            d.safetyKpis);
-write('safety/pressure-trends.json', d.gasPressureTrends);
-write('safety/leak-detection.json',  d.leakDetectionActivity);
-write('safety/alerts.json',          d.safetyAlerts);
+write('safety/kpis.json',               d.safetyKpis);
+write('safety/pressure-trends.json',    d.gasPressureTrends);
+write('safety/leak-detection.json',     d.leakDetectionActivity);
+write('safety/alerts.json',             d.safetyAlerts);
+write('safety/emergency-response.json', d.emergencyResponse);
+write('safety/emergency-kpis.json',     d.emergencyKpis);
 
 // ── Customers ──────────────────────────────────────────────────────────────
 write('customers.json', {
@@ -114,20 +118,30 @@ write('customers.json', {
   complaintTrends:   d.complaintTrends,
   complaintHeatmap:  d.complaintHeatmap,
   recentComplaints:  d.recentComplaints,
+  customerList:      d.customerList,
+  customerDistributionSummary: d.customerDistributionSummary,
 });
 write('customers/kpis.json',              d.customerKpis);
 write('customers/complaint-types.json',   d.complaintTypes);
 write('customers/complaint-trends.json',  d.complaintTrends);
 write('customers/complaint-heatmap.json', d.complaintHeatmap);
 write('customers/recent-complaints.json', d.recentComplaints);
+write('customers/list.json',              d.customerList);
+write('customers/distribution-summary.json', d.customerDistributionSummary);
 
 // ── Workforce ──────────────────────────────────────────────────────────────
 write('workforce.json', {
-  kpis:        d.workforceKpis,
-  activeTasks: d.activeTasks,
+  kpis:            d.workforceKpis,
+  activeTasks:     d.activeTasks,
+  workOrderMapData: d.workOrderMapData,
+  crewVehicles:    d.crewVehicles,
+  distribution:    d.workforceDistribution,
 });
 write('workforce/kpis.json',         d.workforceKpis);
 write('workforce/active-tasks.json', d.activeTasks);
+write('workforce/map-data.json',     d.workOrderMapData);
+write('workforce/crews.json',        d.crewVehicles);
+write('workforce/distribution.json', d.workforceDistribution);
 
 // ── Assets ─────────────────────────────────────────────────────────────────
 write('assets.json', {
@@ -135,11 +149,25 @@ write('assets.json', {
   ageDistribution:    d.assetAgeDistribution,
   maintenanceHistory: d.maintenanceHistory,
   failureFrequency:   d.failureFrequency,
+  intelKpis:          d.assetIntelKpis,
+  assetIntel:         d.assetIntel,
+  predictiveFailures: d.predictiveFailures,
+  expiryItems:        d.expiryItems,
+  meterCorrelation:   d.meterCorrelation,
+  recommendedActions: d.recommendedActions,
+  aiAdvisory:         d.aiAdvisory,
 });
 write('assets/kpis.json',                d.assetKpis);
 write('assets/age-distribution.json',    d.assetAgeDistribution);
 write('assets/maintenance-history.json', d.maintenanceHistory);
 write('assets/failure-frequency.json',   d.failureFrequency);
+write('assets/intel-kpis.json',          d.assetIntelKpis);
+write('assets/intel.json',               d.assetIntel);
+write('assets/predictive-failures.json', d.predictiveFailures);
+write('assets/expiry.json',              d.expiryItems);
+write('assets/meter-correlation.json',   d.meterCorrelation);
+write('assets/recommended-actions.json', d.recommendedActions);
+write('assets/ai-advisory.json',         d.aiAdvisory);
 
 // ── Alerts ─────────────────────────────────────────────────────────────────
 write('alerts.json', d.allAlerts);

@@ -16,10 +16,10 @@ export function AlertsFeed() {
   const { alerts, lastUpdated } = useLiveAlerts(baseAlerts, 30_000);
 
   return (
-    <div className="glass-panel rounded-lg p-4 h-full">
+    <div className="glass-panel rounded-sm p-4 h-full scada-bracket">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2">
-          <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Live Alerts</h3>
+          <h3 className="scada-label">Live Alerts</h3>
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
             <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
@@ -47,7 +47,7 @@ export function AlertsFeed() {
                 exit={{ opacity: 0, x: 16, height: 0 }}
                 transition={{ duration: 0.3 }}
                 layout
-                className={`flex items-start gap-3 p-3 rounded-md border-l-2 ${config.borderClass} ${config.bgClass} cursor-pointer hover:brightness-110 transition-all`}
+                className={`flex items-start gap-3 p-2.5 rounded-sm border-l-2 ${config.borderClass} ${config.bgClass} cursor-pointer hover:brightness-110 transition-all`}
               >
                 <Icon className={`w-4 h-4 mt-0.5 shrink-0 ${config.colorClass}`} />
                 <div className="min-w-0 flex-1">

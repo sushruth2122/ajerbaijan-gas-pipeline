@@ -18,15 +18,15 @@ interface KpiCardProps {
 }
 
 const statusBorder = {
-  safe: "border-l-emerald-500",
-  warning: "border-l-amber-500",
-  critical: "border-l-red-500",
+  safe: "border-l-emerald-500/70",
+  warning: "border-l-amber-500/70",
+  critical: "border-l-red-500/70",
 };
 
 const statusGlow = {
-  safe: "hover:shadow-emerald-500/20",
-  warning: "hover:shadow-amber-500/20",
-  critical: "hover:shadow-red-500/20",
+  safe: "hover:shadow-[0_0_12px_hsl(160_75%_38%/0.15)]",
+  warning: "hover:shadow-[0_0_12px_hsl(40_92%_52%/0.15)]",
+  critical: "hover:shadow-[0_0_12px_hsl(0_78%_52%/0.15)]",
 };
 
 export function KpiCard({
@@ -56,25 +56,25 @@ export function KpiCard({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05, duration: 0.3 }}
-      className={`glass-panel rounded-lg p-4 border-l-[3px] ${statusBorder[status]} ${statusGlow[status]} hover:shadow-lg cursor-pointer transition-all duration-300 select-none`}
+      className={`glass-panel rounded-sm p-4 border-l-[3px] ${statusBorder[status]} ${statusGlow[status]} cursor-pointer transition-all duration-300 select-none scada-bracket`}
       onClick={onClick}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") onClick?.(); }}
     >
       <div className="flex items-start justify-between mb-3">
-        <div className="p-2 rounded-md bg-primary/10 text-primary">
+        <div className="p-1.5 rounded-sm bg-primary/10 border border-primary/20 text-primary">
           {icon}
         </div>
-        <div className={`flex items-center gap-1 text-xs ${trendColor}`}>
+        <div className={`flex items-center gap-1 text-[11px] font-mono ${trendColor}`}>
           {trend === "up" && <TrendingUp className="w-3 h-3" />}
           {trend === "down" && <TrendingDown className="w-3 h-3" />}
           {trend === "neutral" && <Minus className="w-3 h-3" />}
           <span>{change}</span>
         </div>
       </div>
-      <p className="text-2xl font-semibold tracking-tight">{value}</p>
-      <p className="text-xs text-muted-foreground mt-1">{label}</p>
+      <p className="text-2xl font-bold tracking-tight font-mono tabular-nums">{value}</p>
+      <p className="text-[10px] text-muted-foreground mt-1.5 uppercase tracking-[0.1em] font-medium">{label}</p>
     </motion.div>
   );
 }

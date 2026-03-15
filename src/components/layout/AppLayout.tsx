@@ -1,8 +1,8 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState as useStateReact } from "react";
 import { useLocation, Link } from "react-router-dom";
 import {
   LayoutDashboard, Map, BarChart3, DollarSign, Shield, Users, Wrench, Box, Bell, Settings,
-  ChevronLeft, Flame
+  ChevronLeft, Flame, Radio, Wifi, Activity
 } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -20,6 +20,19 @@ const navItems = [
   { title: "Settings", path: "/settings", icon: Settings },
 ];
 
+function SystemClock() {
+  const [time, setTime] = useStateReact(new Date());
+  useEffect(() => {
+    const t = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(t);
+  }, []);
+  return (
+    <span className="font-mono text-xs tabular-nums text-primary tracking-wider">
+      {time.toLocaleTimeString("en-GB", { hour12: false })}
+    </span>
+  );
+}
+
 export function AppLayout({ children }: { children: ReactNode }) {
   const location = useLocation();
   const [collapsed, setCollapsed] = useState(false);
@@ -34,8 +47,8 @@ export function AppLayout({ children }: { children: ReactNode }) {
       >
         {/* Logo */}
         <div className="h-14 flex items-center gap-2 px-4 border-b border-border shrink-0">
-          <div className="w-8 h-8 rounded-md bg-primary/20 flex items-center justify-center shrink-0">
-            <Flame className="w-5 h-5 text-primary" />
+          <div className="w-8 h-8 rounded-sm bg-primary/15 border border-primary/30 flex items-center justify-center shrink-0">
+            <Flame className="w-5 h-5 text-primary drop-shadow-[0_0_6px_hsl(190_85%_42%/0.5)]" />
           </div>
           <AnimatePresence>
             {!collapsed && (
@@ -45,8 +58,8 @@ export function AppLayout({ children }: { children: ReactNode }) {
                 exit={{ opacity: 0 }}
                 className="overflow-hidden whitespace-nowrap"
               >
-                <p className="text-sm font-semibold text-foreground">CaspiaGas</p>
-                <p className="text-[10px] text-muted-foreground">Command Center</p>
+                <p className="text-sm font-bold text-foreground tracking-wide">CASPIA<span className="text-primary">GAS</span></p>
+                <p className="text-[9px] font-mono text-muted-foreground uppercase tracking-[0.15em]">Command Center</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -60,14 +73,14 @@ export function AppLayout({ children }: { children: ReactNode }) {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`flex items-center gap-3 px-3 py-2.5 rounded-md text-sm transition-all duration-150 group ${
+                className={`flex items-center gap-3 px-3 py-2 rounded-sm text-xs font-medium transition-all duration-150 group uppercase tracking-wide ${
                   active
-                    ? "bg-primary/10 text-primary font-medium"
-                    : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
+                    ? "bg-primary/10 text-primary border-l-2 border-primary shadow-[inset_0_0_12px_hsl(190_85%_42%/0.08)]"
+                    : "text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground border-l-2 border-transparent"
                 }`}
                 title={collapsed ? item.title : undefined}
               >
-                <item.icon className={`w-4 h-4 shrink-0 ${active ? "text-primary" : ""}`} />
+                <item.icon className={`w-4 h-4 shrink-0 ${active ? "text-primary drop-shadow-[0_0_4px_hsl(190_85%_42%/0.4)]" : ""}`} />
                 <AnimatePresence>
                   {!collapsed && (
                     <motion.span
@@ -85,6 +98,27 @@ export function AppLayout({ children }: { children: ReactNode }) {
           })}
         </nav>
 
+        {/* System status at sidebar bottom */}
+        <AnimatePresence>
+          {!collapsed && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="px-3 py-2 border-t border-border text-[10px] font-mono text-muted-foreground space-y-1"
+            >
+              <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-scada-glow" />
+                <span>SYS NOMINAL</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                <span>SCADA LINK: ACTIVE</span>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* Collapse toggle */}
         <button
           onClick={() => setCollapsed(!collapsed)}
@@ -96,15 +130,35 @@ export function AppLayout({ children }: { children: ReactNode }) {
 
       {/* Main area */}
       <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
-        <header className="h-12 border-b border-border flex items-center px-6 bg-card shrink-0">
-          <p className="text-sm font-medium text-muted-foreground">
-            CaspiaGas Command Center — Gas Distribution Intelligence
-          </p>
+        {/* SCADA Header Bar */}
+        <header className="h-10 border-b border-border flex items-center justify-between px-4 bg-card/80 backdrop-blur shrink-0">
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1.5">
+              <Activity className="w-3 h-3 text-primary animate-scada-glow" />
+              <span className="text-[10px] font-mono uppercase tracking-[0.12em] text-muted-foreground">
+                Gas Distribution Intelligence
+              </span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-4">
+            {/* Status indicators */}
+            <div className="flex items-center gap-1.5">
+              <Wifi className="w-3 h-3 text-emerald-500" />
+              <span className="text-[10px] font-mono text-emerald-500">ONLINE</span>
+            </div>
+            <div className="h-3 w-px bg-border" />
+            <div className="flex items-center gap-1.5">
+              <Radio className="w-3 h-3 text-primary" />
+              <span className="text-[10px] font-mono text-muted-foreground">TELEMETRY</span>
+            </div>
+            <div className="h-3 w-px bg-border" />
+            <SystemClock />
+          </div>
         </header>
 
         {/* Content */}
-        <main className="flex-1 overflow-y-auto p-6">
+        <main className="flex-1 overflow-y-auto p-5">
           {children}
         </main>
       </div>

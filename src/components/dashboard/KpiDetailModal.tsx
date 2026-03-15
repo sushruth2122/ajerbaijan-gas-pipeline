@@ -65,7 +65,7 @@ export function KpiDetailModal({ open, onOpenChange, meta, label, value, change,
       <DialogContent className="sm:max-w-[520px] bg-[hsl(220,18%,10%)] border-[hsl(220,15%,18%)] text-foreground">
         <DialogHeader>
           <div className="flex items-center gap-3">
-            <div className={`p-2.5 rounded-lg ${colors.bg} ${colors.text}`}>{icon}</div>
+            <div className={`p-2.5 rounded-sm ${colors.bg} ${colors.text}`}>{icon}</div>
             <div className="flex-1 min-w-0">
               <DialogTitle className="text-base font-semibold leading-tight">{label}</DialogTitle>
               <DialogDescription className="sr-only">{meta.definition}</DialogDescription>
@@ -93,7 +93,7 @@ export function KpiDetailModal({ open, onOpenChange, meta, label, value, change,
         </div>
 
         {/* Definition */}
-        <div className="mt-3 p-3 rounded-lg bg-[hsl(220,15%,13%)] border border-[hsl(220,15%,18%)]">
+        <div className="mt-3 p-3 rounded-sm bg-[hsl(220,15%,13%)] border border-[hsl(220,15%,18%)]">
           <div className="flex items-start gap-2">
             <Info className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
             <p className="text-xs text-muted-foreground leading-relaxed">{meta.definition}</p>
@@ -186,7 +186,7 @@ export function KpiDetailModal({ open, onOpenChange, meta, label, value, change,
         </div>
 
         {/* Insight */}
-        <div className={`mt-3 p-3 rounded-lg ${colors.bg} border ${colors.border}`}>
+        <div className={`mt-3 p-3 rounded-sm ${colors.bg} border ${colors.border}`}>
           <p className={`text-xs leading-relaxed ${colors.text}`}>{meta.insight}</p>
         </div>
 

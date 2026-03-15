@@ -12,8 +12,8 @@ export function ComplaintsChart() {
   const { data } = useDashboard();
   const complaintsByArea = data?.complaintsByArea ?? fallback;
   return (
-    <div className="glass-panel rounded-lg p-4">
-      <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground mb-4">
+    <div className="glass-panel rounded-sm p-4 scada-bracket">
+      <h3 className="scada-label mb-4">
         Complaint Density by Area
       </h3>
       <div className="h-[250px]">
@@ -26,12 +26,12 @@ export function ComplaintsChart() {
               contentStyle={{
                 backgroundColor: "hsl(220, 18%, 12%)",
                 border: "1px solid hsl(220, 15%, 18%)",
-                borderRadius: "8px",
+                borderRadius: "2px",
                 fontSize: "12px",
                 color: "hsl(210, 20%, 90%)",
               }}
             />
-            <Bar dataKey="complaints" radius={[0, 4, 4, 0]} name="Complaints">
+            <Bar dataKey="complaints" radius={[0, 1, 1, 0]} name="Complaints">
               {complaintsByArea.map((entry, index) => (
                 <Cell key={index} fill={severityColors[entry.severity]} />
               ))}

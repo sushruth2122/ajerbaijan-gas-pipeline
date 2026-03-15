@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,56 +6,61 @@
 
 @layer base {
   :root {
-    --background: 220 20% 7%;
-    --foreground: 210 20% 90%;
+    --background: 220 22% 6%;
+    --foreground: 190 25% 88%;
 
-    --card: 220 18% 10%;
-    --card-foreground: 210 20% 90%;
+    --card: 220 20% 9%;
+    --card-foreground: 190 20% 88%;
 
-    --popover: 220 18% 12%;
-    --popover-foreground: 210 20% 90%;
+    --popover: 220 20% 10%;
+    --popover-foreground: 190 20% 88%;
 
-    --primary: 190 80% 45%;
-    --primary-foreground: 220 20% 7%;
+    --primary: 190 85% 42%;
+    --primary-foreground: 220 22% 6%;
 
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 210 20% 85%;
+    --secondary: 220 18% 13%;
+    --secondary-foreground: 190 20% 82%;
 
-    --muted: 220 15% 14%;
-    --muted-foreground: 215 15% 55%;
+    --muted: 220 18% 12%;
+    --muted-foreground: 200 15% 48%;
 
-    --accent: 40 90% 55%;
-    --accent-foreground: 220 20% 7%;
+    --accent: 40 92% 52%;
+    --accent-foreground: 220 22% 6%;
 
-    --destructive: 0 75% 55%;
+    --destructive: 0 78% 52%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 18%;
-    --input: 220 15% 18%;
-    --ring: 190 80% 45%;
+    --border: 190 30% 16%;
+    --input: 220 18% 15%;
+    --ring: 190 85% 42%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
 
-    --sidebar-background: 220 20% 5%;
-    --sidebar-foreground: 210 15% 70%;
-    --sidebar-primary: 190 80% 45%;
-    --sidebar-primary-foreground: 220 20% 7%;
-    --sidebar-accent: 220 15% 12%;
-    --sidebar-accent-foreground: 210 20% 90%;
-    --sidebar-border: 220 15% 14%;
-    --sidebar-ring: 190 80% 45%;
+    --sidebar-background: 220 24% 4%;
+    --sidebar-foreground: 190 15% 60%;
+    --sidebar-primary: 190 85% 42%;
+    --sidebar-primary-foreground: 220 22% 6%;
+    --sidebar-accent: 220 18% 10%;
+    --sidebar-accent-foreground: 190 20% 88%;
+    --sidebar-border: 190 20% 12%;
+    --sidebar-ring: 190 85% 42%;
 
-    /* Custom tokens */
-    --warning: 40 90% 55%;
-    --warning-foreground: 220 20% 7%;
+    /* SCADA tokens */
+    --warning: 40 92% 52%;
+    --warning-foreground: 220 22% 6%;
     --info: 210 80% 55%;
-    --info-foreground: 220 20% 7%;
-    --success: 160 70% 40%;
-    --success-foreground: 220 20% 7%;
-    --surface: 220 18% 12%;
-    --surface-foreground: 210 20% 85%;
-    --glow-primary: 190 80% 45%;
-    --glow-accent: 40 90% 55%;
+    --info-foreground: 220 22% 6%;
+    --success: 160 75% 38%;
+    --success-foreground: 220 22% 6%;
+    --surface: 220 20% 10%;
+    --surface-foreground: 190 20% 82%;
+    --glow-primary: 190 85% 42%;
+    --glow-accent: 40 92% 52%;
+
+    /* SCADA-specific */
+    --scada-grid: 190 30% 12%;
+    --scada-scanline: 190 40% 50%;
+    --scada-terminal: 160 100% 40%;
   }
 }
 
@@ -65,44 +70,239 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', 'JetBrains Mono', system-ui, sans-serif;
   }
+}
+
+/* ═══════════════════════════════════════════════
+   SCADA HUD — Grid & Scanline Overlay
+   ═══════════════════════════════════════════════ */
+
+/* Subtle grid pattern on the main content area */
+main {
+  background-image:
+    linear-gradient(hsl(var(--scada-grid) / 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--scada-grid) / 0.25) 1px, transparent 1px);
+  background-size: 40px 40px;
+  position: relative;
+}
+
+/* CRT-style scanline overlay */
+main::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    hsl(var(--scada-scanline) / 0.015) 2px,
+    hsl(var(--scada-scanline) / 0.015) 4px
+  );
+  mix-blend-mode: overlay;
 }
 
 @layer utilities {
+  /* Glow effects */
   .glow-primary {
-    box-shadow: 0 0 20px -5px hsl(var(--glow-primary) / 0.3);
+    box-shadow:
+      0 0 8px -2px hsl(var(--glow-primary) / 0.4),
+      inset 0 1px 0 hsl(var(--glow-primary) / 0.1);
   }
   .glow-accent {
-    box-shadow: 0 0 20px -5px hsl(var(--glow-accent) / 0.3);
+    box-shadow:
+      0 0 8px -2px hsl(var(--glow-accent) / 0.4),
+      inset 0 1px 0 hsl(var(--glow-accent) / 0.1);
   }
+
+  /* SCADA glass panel — sharper, more industrial */
   .glass-panel {
-    background: hsl(var(--card) / 0.8);
-    backdrop-filter: blur(12px);
+    background: hsl(var(--card) / 0.9);
+    backdrop-filter: blur(8px);
     border: 1px solid hsl(var(--border));
+    box-shadow:
+      inset 0 1px 0 hsl(190 40% 40% / 0.08),
+      0 2px 8px -2px hsl(220 30% 4% / 0.5);
   }
+
+  /* SCADA status indicators */
   .status-pulse {
     animation: pulse-glow 2s ease-in-out infinite;
   }
+  .scada-blink {
+    animation: scada-blink 1.2s step-end infinite;
+  }
+  .scada-sweep {
+    animation: scada-sweep 3s linear infinite;
+  }
+
+  /* Tech border — double-line SCADA style */
+  .scada-border {
+    border: 1px solid hsl(var(--border));
+    outline: 1px solid hsl(var(--border) / 0.3);
+    outline-offset: 2px;
+  }
+
+  /* Monospace data display */
+  .scada-value {
+    font-family: 'JetBrains Mono', 'Share Tech Mono', monospace;
+    letter-spacing: 0.05em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* SCADA header label style */
+  .scada-label {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: hsl(var(--muted-foreground));
+  }
+
+  /* Live indicator dot */
+  .scada-live {
+    position: relative;
+  }
+  .scada-live::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: hsl(var(--scada-terminal));
+    margin-right: 6px;
+    animation: pulse-glow 1.5s ease-in-out infinite;
+    box-shadow: 0 0 6px hsl(var(--scada-terminal) / 0.6);
+  }
+
+  /* Corner bracket decorations for panels */
+  .scada-bracket {
+    position: relative;
+  }
+  .scada-bracket::before,
+  .scada-bracket::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-color: hsl(var(--primary) / 0.5);
+    pointer-events: none;
+  }
+  .scada-bracket::before {
+    top: -1px;
+    left: -1px;
+    border-top: 2px solid;
+    border-left: 2px solid;
+    border-color: inherit;
+  }
+  .scada-bracket::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 2px solid;
+    border-right: 2px solid;
+    border-color: inherit;
+  }
 }
+
+/* ═══════════════════════════════════════════════
+   SCADA Keyframes
+   ═══════════════════════════════════════════════ */
 
 @keyframes pulse-glow {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+  50% { opacity: 0.4; }
 }
 
-/* Scrollbar styling */
+@keyframes scada-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes scada-sweep {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes scada-data-flash {
+  0%, 80%, 100% { color: hsl(var(--foreground)); }
+  90% { color: hsl(var(--primary)); }
+}
+
+/* ═══════════════════════════════════════════════
+   Scrollbar — Industrial dark style
+   ═══════════════════════════════════════════════ */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   background: hsl(var(--background));
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--border));
-  border-radius: 3px;
+  background: hsl(var(--primary) / 0.3);
+  border-radius: 0;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground));
+  background: hsl(var(--primary) / 0.5);
+}
+
+/* ═══════════════════════════════════════════════
+   Recharts SCADA overrides
+   ═══════════════════════════════════════════════ */
+.recharts-cartesian-grid line {
+  stroke: hsl(var(--scada-grid) / 0.4) !important;
+}
+.recharts-text {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 10px !important;
+}
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: hsl(var(--card)) !important;
+  border: 1px solid hsl(var(--primary) / 0.3) !important;
+  border-radius: 2px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11px !important;
+}
+
+/* ═══════════════════════════════════════════════
+   SCADA Tab Styles
+   ═══════════════════════════════════════════════ */
+[role="tablist"] {
+  border-radius: 2px !important;
+  background: hsl(var(--card) / 0.6) !important;
+  border: 1px solid hsl(var(--border)) !important;
+}
+[role="tab"] {
+  border-radius: 2px !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.7rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+}
+[role="tab"][data-state="active"] {
+  background: hsl(var(--primary) / 0.15) !important;
+  color: hsl(var(--primary)) !important;
+  box-shadow: inset 0 -2px 0 hsl(var(--primary)) !important;
+}
+
+/* ═══════════════════════════════════════════════
+   Table SCADA overrides
+   ═══════════════════════════════════════════════ */
+table {
+  font-variant-numeric: tabular-nums;
+}
+th {
+  font-family: 'Inter', system-ui, sans-serif !important;
+  font-size: 0.65rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  color: hsl(var(--muted-foreground)) !important;
+}
+td {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.75rem !important;
 }

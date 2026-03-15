@@ -6,11 +6,15 @@ import { AiAdvisory } from "@/components/dashboard/AiAdvisory";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { customerKpis as fbKpis, complaintTypes as fbTypes, complaintTrends as fbTrends, complaintHeatmap as fbHeatmap, recentComplaints as fbComplaints } from "@/data/mockData";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { customerKpis as fbKpis, complaintTypes as fbTypes, complaintTrends as fbTrends, complaintHeatmap as fbHeatmap, recentComplaints as fbComplaints, customerList as fbCustomerList, customerDistributionSummary as fbDistSummary } from "@/data/mockData";
 import { allKpiMetadata } from "@/data/allKpiMetadata";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import { useCustomers } from "@/hooks/useApiData";
 import type { AiInsight } from "@/components/dashboard/AiAdvisory";
+import { CustomerDistributionMap } from "@/components/customers/CustomerDistributionMap";
+import { CustomerList } from "@/components/customers/CustomerList";
+import { SearchFilterBar } from "@/components/assets/SearchFilterBar";
 
 const customerInsights: AiInsight[] = [
   { type: "warning", text: "Complaint volume at 1,284 is 157 % above the 500 target. Low Pressure (32 %) and Billing (22 %) are the top categories." },
@@ -35,18 +39,31 @@ const CustomerIntelligence = () => {
   const complaintTrends = data?.complaintTrends ?? fbTrends;
   const complaintHeatmap = data?.complaintHeatmap ?? fbHeatmap;
   const recentComplaints = data?.recentComplaints ?? fbComplaints;
+  const customerList = data?.customerList ?? fbCustomerList;
+  const distributionSummary = data?.customerDistributionSummary ?? fbDistSummary;
   const [selectedKpiIdx, setSelectedKpiIdx] = useState<number | null>(null);
+  const [selectedCustomer, setSelectedCustomer] = useState<{ customerType: string; location: string; estimatedCount: number | string; coordinates: string } | null>(null);
+  const [complaintSearch, setComplaintSearch] = useState("");
+  const [complaintStatusFilter, setComplaintStatusFilter] = useState("");
   const selectedKpi = selectedKpiIdx !== null ? customerKpis[selectedKpiIdx] : null;
   const selectedMeta = selectedKpi ? allKpiMetadata[selectedKpi.label] ?? null : null;
+
+  const filteredComplaints = recentComplaints.filter((c: any) => {
+    const q = complaintSearch.toLowerCase();
+    if (q && !(`${c.id} ${c.customer} ${c.area} ${c.type}`).toLowerCase().includes(q)) return false;
+    if (complaintStatusFilter && c.status !== complaintStatusFilter) return false;
+    return true;
+  });
+
   return (
   <div className="space-y-6">
     <div>
-      <h1 className="text-xl font-semibold">Customers</h1>
-      <p className="text-sm text-muted-foreground">Complaint tracking, resolution times & satisfaction analytics</p>
+      <h1 className="text-lg font-bold tracking-wide uppercase">Customers</h1>
+      <p className="text-[11px] font-mono text-muted-foreground tracking-wide">Customer distribution, complaint tracking, resolution times & satisfaction analytics</p>
     </div>
 
     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-      {customerKpis.map((kpi, i) => {
+      {customerKpis.map((kpi: any, i: number) => {
         const meta = allKpiMetadata[kpi.label];
         return (
           <KpiCard key={kpi.label} label={kpi.label} value={kpi.value} change={kpi.change} trend={kpi.trend} icon={iconMap[kpi.icon]} index={i}
@@ -66,6 +83,43 @@ const CustomerIntelligence = () => {
       icon={selectedKpi ? iconMap[selectedKpi.icon] : null}
     />
 
+    {/* Tabbed workspace */}
+    <Tabs defaultValue="distribution" className="w-full">
+      <TabsList className="bg-muted/50">
+        <TabsTrigger value="distribution">Customer Distribution</TabsTrigger>
+        <TabsTrigger value="complaints">Complaint Analytics</TabsTrigger>
+      </TabsList>
+
+      <TabsContent value="distribution" className="mt-4 space-y-4">
+        {/* Map */}
+        <Card className="bg-card border-border overflow-hidden">
+          <CardHeader className="pb-3">
+            <CardTitle className="text-sm font-semibold">Customer Distribution Map</CardTitle>
+          </CardHeader>
+          <CardContent className="p-0">
+            <CustomerDistributionMap onSelectCustomer={setSelectedCustomer} />
+          </CardContent>
+        </Card>
+
+        {/* Selected customer details */}
+        {selectedCustomer && (
+          <Card className="bg-card border-border">
+            <CardContent className="pt-4 pb-3">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                <div><span className="text-muted-foreground">Customer Type:</span> <strong>{selectedCustomer.customerType}</strong></div>
+                <div><span className="text-muted-foreground">Location:</span> <strong>{selectedCustomer.location}</strong></div>
+                <div><span className="text-muted-foreground">Est. Count in Area:</span> <strong>{selectedCustomer.estimatedCount}</strong></div>
+                <div><span className="text-muted-foreground">Coordinates:</span> <span className="font-mono text-xs">{selectedCustomer.coordinates}</span></div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Customer list with search/filter */}
+        <CustomerList customers={customerList} summary={distributionSummary} />
+      </TabsContent>
+
+      <TabsContent value="complaints" className="mt-4 space-y-4">
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
       <Card className="bg-card border-border">
         <CardHeader className="pb-3"><CardTitle className="text-sm font-semibold">Complaint Types Distribution</CardTitle></CardHeader>
@@ -76,7 +130,7 @@ const CustomerIntelligence = () => {
               <XAxis type="number" tick={{ fontSize: 11, fill: "hsl(215, 15%, 55%)" }} />
               <YAxis dataKey="type" type="category" tick={{ fontSize: 11, fill: "hsl(215, 15%, 55%)" }} width={110} />
               <Tooltip contentStyle={{ background: "hsl(220, 18%, 12%)", border: "1px solid hsl(220, 15%, 18%)", borderRadius: 8, fontSize: 12 }} />
-              <Bar dataKey="count" fill="hsl(190, 80%, 45%)" radius={[0, 4, 4, 0]} />
+              <Bar dataKey="count" fill="hsl(200, 40%, 45%)" radius={[0, 4, 4, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </CardContent>
@@ -91,7 +145,7 @@ const CustomerIntelligence = () => {
               <XAxis dataKey="day" tick={{ fontSize: 11, fill: "hsl(215, 15%, 55%)" }} />
               <YAxis tick={{ fontSize: 11, fill: "hsl(215, 15%, 55%)" }} />
               <Tooltip contentStyle={{ background: "hsl(220, 18%, 12%)", border: "1px solid hsl(220, 15%, 18%)", borderRadius: 8, fontSize: 12 }} />
-              <Line type="monotone" dataKey="complaints" stroke="hsl(40, 90%, 55%)" strokeWidth={2} dot={{ r: 4 }} />
+              <Line type="monotone" dataKey="complaints" stroke="hsl(35, 45%, 48%)" strokeWidth={2} dot={{ r: 4 }} />
             </LineChart>
           </ResponsiveContainer>
         </CardContent>
@@ -109,9 +163,9 @@ const CustomerIntelligence = () => {
             <YAxis tick={{ fontSize: 11, fill: "hsl(215, 15%, 55%)" }} />
             <Tooltip contentStyle={{ background: "hsl(220, 18%, 12%)", border: "1px solid hsl(220, 15%, 18%)", borderRadius: 8, fontSize: 12 }} />
             <Legend wrapperStyle={{ fontSize: 11 }} />
-            <Bar dataKey="low" stackId="a" fill="hsl(210, 80%, 55%)" name="Low" />
-            <Bar dataKey="medium" stackId="a" fill="hsl(40, 90%, 55%)" name="Medium" />
-            <Bar dataKey="high" stackId="a" fill="hsl(0, 75%, 55%)" name="High" radius={[4, 4, 0, 0]} />
+            <Bar dataKey="low" stackId="a" fill="hsl(210, 40%, 50%)" name="Low" />
+            <Bar dataKey="medium" stackId="a" fill="hsl(35, 45%, 48%)" name="Medium" />
+            <Bar dataKey="high" stackId="a" fill="hsl(0, 38%, 48%)" name="High" radius={[4, 4, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </CardContent>
@@ -120,7 +174,17 @@ const CustomerIntelligence = () => {
     {/* Recent Complaints */}
     <Card className="bg-card border-border">
       <CardHeader className="pb-3"><CardTitle className="text-sm font-semibold">Recent Customer Complaints</CardTitle></CardHeader>
-      <CardContent>
+      <CardContent className="space-y-3">
+        <SearchFilterBar
+          searchValue={complaintSearch}
+          onSearchChange={setComplaintSearch}
+          placeholder="Search by ID, customer, area, type..."
+          resultCount={filteredComplaints.length}
+          totalCount={recentComplaints.length}
+          filters={[
+            { label: "All Status", value: complaintStatusFilter, options: ["Open", "In Progress", "Resolved", "Investigating"], onChange: setComplaintStatusFilter },
+          ]}
+        />
         <div className="overflow-x-auto">
           <Table>
             <TableHeader>
@@ -134,7 +198,7 @@ const CustomerIntelligence = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {recentComplaints.map(c => (
+              {filteredComplaints.map((c: any) => (
                 <TableRow key={c.id}>
                   <TableCell className="font-mono text-xs">{c.id}</TableCell>
                   <TableCell className="text-sm">{c.customer}</TableCell>
@@ -151,6 +215,8 @@ const CustomerIntelligence = () => {
         </div>
       </CardContent>
     </Card>
+      </TabsContent>
+    </Tabs>
 
     <AiAdvisory title="Customer Intelligence AI Advisory" insights={customerInsights} />
   </div>

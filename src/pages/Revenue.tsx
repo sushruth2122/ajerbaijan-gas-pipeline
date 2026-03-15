@@ -42,8 +42,8 @@ const Revenue = () => {
   return (
   <div className="space-y-6">
     <div>
-      <h1 className="text-xl font-semibold">Revenue</h1>
-      <p className="text-sm text-muted-foreground">Billing, collections & loss detection analytics</p>
+      <h1 className="text-lg font-bold tracking-wide uppercase">Revenue</h1>
+      <p className="text-[11px] font-mono text-muted-foreground tracking-wide">Billing, collections & loss detection analytics</p>
     </div>
 
     <div className="grid grid-cols-2 md:grid-cols-4 gap-3">

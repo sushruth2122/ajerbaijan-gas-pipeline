@@ -59,6 +59,8 @@ export const api = {
     getPressureTrends: () => fetchJson<any[]>('/safety/pressure-trends'),
     getLeakDetection: () => fetchJson<any[]>('/safety/leak-detection'),
     getAlerts: () => fetchJson<any[]>('/safety/alerts'),
+    getEmergencyResponse: () => fetchJson<any[]>('/safety/emergency-response'),
+    getEmergencyKpis: () => fetchJson<any[]>('/safety/emergency-kpis'),
   },
 
   customers: {
@@ -68,12 +70,17 @@ export const api = {
     getComplaintTrends: () => fetchJson<any[]>('/customers/complaint-trends'),
     getComplaintHeatmap: () => fetchJson<any[]>('/customers/complaint-heatmap'),
     getRecentComplaints: () => fetchJson<any[]>('/customers/recent-complaints'),
+    getList: () => fetchJson<any[]>('/customers/list'),
+    getDistributionSummary: () => fetchJson<any>('/customers/distribution-summary'),
   },
 
   workforce: {
     getAll: () => fetchJson<any>('/workforce'),
     getKpis: () => fetchJson<any[]>('/workforce/kpis'),
     getActiveTasks: () => fetchJson<any[]>('/workforce/active-tasks'),
+    getMapData: () => fetchJson<any[]>('/workforce/map-data'),
+    getCrews: () => fetchJson<any[]>('/workforce/crews'),
+    getDistribution: () => fetchJson<any>('/workforce/distribution'),
   },
 
   assets: {
@@ -82,6 +89,13 @@ export const api = {
     getAgeDistribution: () => fetchJson<any[]>('/assets/age-distribution'),
     getMaintenanceHistory: () => fetchJson<any[]>('/assets/maintenance-history'),
     getFailureFrequency: () => fetchJson<any[]>('/assets/failure-frequency'),
+    getIntelKpis: () => fetchJson<any[]>('/assets/intel-kpis'),
+    getIntel: () => fetchJson<any[]>('/assets/intel'),
+    getPredictiveFailures: () => fetchJson<any[]>('/assets/predictive-failures'),
+    getExpiry: () => fetchJson<any[]>('/assets/expiry'),
+    getMeterCorrelation: () => fetchJson<any[]>('/assets/meter-correlation'),
+    getRecommendedActions: () => fetchJson<any[]>('/assets/recommended-actions'),
+    getAiAdvisory: () => fetchJson<any[]>('/assets/ai-advisory'),
   },
 
   alerts: {

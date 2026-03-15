@@ -1,16 +1,36 @@
-workorder_id,asset_id,crew_id,status,priority,assigned_time,estimated_resolution_time,actual_resolution_time,location,type
-WO-001,AST-003,CRW-A,in_progress,high,2024-01-18T06:45:00Z,2024-01-18T10:45:00Z,,Industrial Zone A,repair
-WO-002,AST-008,CRW-B,in_progress,critical,2024-01-18T05:00:00Z,2024-01-18T09:00:00Z,,North Industrial,emergency
-WO-003,AST-013,CRW-C,assigned,high,2024-01-18T08:30:00Z,2024-01-18T14:30:00Z,,Valley Industrial,maintenance
-WO-004,AST-017,CRW-D,assigned,medium,2024-01-18T09:00:00Z,2024-01-18T17:00:00Z,,Factory Row,inspection
-WO-005,AST-007,CRW-A,completed,medium,2024-01-17T14:00:00Z,2024-01-17T18:00:00Z,2024-01-17T17:30:00Z,Westside Plaza,repair
-WO-006,AST-005,CRW-B,completed,low,2024-01-17T10:00:00Z,2024-01-17T16:00:00Z,2024-01-17T15:45:00Z,Commercial Center,maintenance
-WO-007,AST-020,CRW-E,assigned,high,2024-01-18T07:15:00Z,2024-01-18T13:15:00Z,,Mountain View,repair
-WO-008,AST-015,CRW-C,pending,low,2024-01-18T10:00:00Z,2024-01-18T18:00:00Z,,Market District,inspection
-WO-009,AST-001,CRW-D,completed,medium,2024-01-17T08:00:00Z,2024-01-17T14:00:00Z,2024-01-17T13:20:00Z,Downtown District,maintenance
-WO-010,AST-011,CRW-A,completed,low,2024-01-17T12:00:00Z,2024-01-17T18:00:00Z,2024-01-17T17:00:00Z,Riverside Complex,inspection
-WO-011,AST-002,,pending,low,2024-01-18T11:00:00Z,2024-01-19T11:00:00Z,,Uptown Heights,maintenance
-WO-012,AST-004,,pending,medium,2024-01-18T12:00:00Z,2024-01-18T20:00:00Z,,Residential Block B,repair
-WO-013,AST-006,,pending,low,2024-01-18T13:00:00Z,2024-01-19T13:00:00Z,,Eastside Manor,inspection
-WO-014,AST-009,,pending,low,2024-01-18T14:00:00Z,2024-01-19T14:00:00Z,,South Residential,maintenance
-WO-015,AST-010,,pending,medium,2024-01-18T15:00:00Z,2024-01-18T23:00:00Z,,Central Business,repair
+workorder_id,asset_id,crew_id,status,priority,assigned_time,estimated_resolution_time,actual_resolution_time,location,type,latitude,longitude,city
+WO-001,AST-003,CRW-A,in_progress,high,2024-01-18T06:45:00Z,2024-01-18T10:45:00Z,,Industrial Zone A,repair,40.4093,49.8671,Baku
+WO-002,AST-008,CRW-B,in_progress,critical,2024-01-18T05:00:00Z,2024-01-18T09:00:00Z,,North Industrial,emergency,40.44,49.91,Baku
+WO-003,AST-013,CRW-C,assigned,high,2024-01-18T08:30:00Z,2024-01-18T14:30:00Z,,Valley Industrial,maintenance,40.37,49.79,Baku
+WO-004,AST-017,CRW-D,assigned,medium,2024-01-18T09:00:00Z,2024-01-18T17:00:00Z,,Factory Row,inspection,40.59,49.68,Sumqayit
+WO-005,AST-007,CRW-A,completed,medium,2024-01-17T14:00:00Z,2024-01-17T18:00:00Z,2024-01-17T17:30:00Z,Westside Plaza,repair,40.56,49.61,Sumqayit
+WO-006,AST-005,CRW-B,completed,low,2024-01-17T10:00:00Z,2024-01-17T16:00:00Z,2024-01-17T15:45:00Z,Commercial Center,maintenance,40.64,49.74,Sumqayit
+WO-007,AST-020,CRW-E,assigned,high,2024-01-18T07:15:00Z,2024-01-18T13:15:00Z,,Mountain View,repair,40.68,46.36,Ganja
+WO-008,AST-015,CRW-C,pending,low,2024-01-18T10:00:00Z,2024-01-18T18:00:00Z,,Market District,inspection,40.72,46.42,Ganja
+WO-009,AST-001,CRW-D,completed,medium,2024-01-17T08:00:00Z,2024-01-17T14:00:00Z,2024-01-17T13:20:00Z,Downtown District,maintenance,40.63,46.29,Ganja
+WO-010,AST-011,CRW-A,completed,low,2024-01-17T12:00:00Z,2024-01-17T18:00:00Z,2024-01-17T17:00:00Z,Riverside Complex,inspection,40.76,47.06,Mingachevir
+WO-011,AST-002,CRW-D,in_progress,medium,2024-01-18T11:00:00Z,2024-01-19T11:00:00Z,,Uptown Heights,maintenance,40.82,47.10,Mingachevir
+WO-012,AST-004,CRW-D,pending,low,2024-01-18T12:00:00Z,2024-01-18T20:00:00Z,,Residential Block B,repair,40.70,46.98,Mingachevir
+WO-013,AST-006,CRW-D,in_progress,critical,2024-01-18T13:00:00Z,2024-01-19T13:00:00Z,,Eastside Zone,emergency,38.75,48.85,Lankaran
+WO-014,AST-009,CRW-E,assigned,high,2024-01-18T14:00:00Z,2024-01-19T14:00:00Z,,South Residential,emergency,38.79,48.92,Lankaran
+WO-015,AST-010,CRW-E,pending,medium,2024-01-18T15:00:00Z,2024-01-18T23:00:00Z,,Central Business,emergency,38.71,48.79,Lankaran
+WO-016,AST-023,CRW-A,in_progress,high,2024-01-18T04:30:00Z,2024-01-18T08:30:00Z,,Old Town,repair,40.49,49.97,Baku
+WO-017,AST-029,CRW-C,assigned,low,2024-01-18T05:15:00Z,2024-01-18T11:15:00Z,,Southern Outskirts,emergency,40.77,46.47,Ganja
+WO-018,AST-041,CRW-D,assigned,critical,2024-01-18T06:00:00Z,2024-01-18T12:00:00Z,,Surakhani Field,maintenance,40.69,47.15,Mingachevir
+WO-019,AST-047,CRW-B,assigned,high,2024-01-18T07:00:00Z,2024-01-18T13:00:00Z,,Ramana Industrial,inspection,40.62,47.52,Central Belt
+WO-020,AST-038,CRW-B,in_progress,medium,2024-01-18T08:00:00Z,2024-01-18T14:00:00Z,,Sabunchi Yard,inspection,40.55,47.66,Central Belt
+WO-021,AST-025,CRW-B,pending,low,2024-01-18T06:30:00Z,2024-01-18T12:30:00Z,,Port Authority,inspection,40.48,47.41,Central Belt
+WO-022,AST-031,CRW-B,in_progress,critical,2024-01-18T09:00:00Z,2024-01-18T15:00:00Z,,Bayil District,inspection,40.32,47.78,Central Belt
+WO-023,AST-033,CRW-B,assigned,high,2024-01-17T10:00:00Z,2024-01-17T16:00:00Z,2024-01-17T15:20:00Z,Seaside Terminal,inspection,40.71,47.33,Central Belt
+WO-024,AST-036,CRW-C,in_progress,critical,2024-01-18T09:30:00Z,2024-01-18T15:30:00Z,,Bibi-Heybat,repair,40.65,47.94,Goychay Corridor
+WO-025,AST-044,CRW-C,assigned,high,2024-01-18T08:15:00Z,2024-01-18T14:15:00Z,,Mashtaga Zone,repair,40.58,48.08,Goychay Corridor
+WO-026,AST-050,CRW-C,pending,medium,2024-01-18T07:45:00Z,2024-01-18T13:45:00Z,,Balakhani Junction,repair,40.71,48.22,Goychay Corridor
+WO-027,AST-021,CRW-C,pending,low,2024-01-18T10:30:00Z,2024-01-18T18:30:00Z,,Absheron East,repair,40.44,47.87,Goychay Corridor
+WO-028,AST-027,CRW-C,in_progress,critical,2024-01-18T11:30:00Z,2024-01-18T19:30:00Z,,University Area,repair,40.50,48.31,Goychay Corridor
+WO-029,AST-040,CRW-D,assigned,high,2024-01-18T12:30:00Z,2024-01-19T12:30:00Z,,Heydar Aliyev Center,maintenance,40.62,48.55,Shirvan Midland
+WO-030,AST-046,CRW-D,in_progress,critical,2024-01-18T13:30:00Z,2024-01-19T13:30:00Z,,Lokbatan Cluster,maintenance,40.42,48.71,Shirvan Midland
+WO-031,AST-048,CRW-D,pending,medium,2024-01-18T14:00:00Z,2024-01-19T06:00:00Z,,Shirvan West,maintenance,40.30,48.47,Shirvan Midland
+WO-032,AST-022,CRW-D,assigned,low,2024-01-18T14:30:00Z,2024-01-19T08:00:00Z,,Shirvan North,maintenance,40.74,48.62,Shirvan Midland
+WO-033,AST-035,CRW-D,in_progress,high,2024-01-18T15:00:00Z,2024-01-19T03:00:00Z,,Shirvan Central,maintenance,40.68,48.38,Shirvan Midland
+WO-034,AST-043,CRW-E,in_progress,critical,2024-01-18T04:00:00Z,2024-01-18T10:00:00Z,,Khankendi Main,emergency,39.82,46.75,Khankendi
+WO-035,AST-049,CRW-E,assigned,high,2024-01-18T04:45:00Z,2024-01-18T10:45:00Z,,Khankendi East,emergency,39.88,46.81,Khankendi

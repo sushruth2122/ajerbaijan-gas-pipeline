@@ -25,3 +25,9 @@ public/api/
 *.njsproj
 *.sln
 *.sw?
+
+# Temporary data-patching scripts
+generate_leaks.py
+patch_server.py
+patch_server2.py
+rewrite_metadata.py

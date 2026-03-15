@@ -33,6 +33,8 @@ const complaints = loadCsv('complaints.csv');
 const leaks      = loadCsv('leaks.csv');
 const assets     = loadCsv('assets.csv');
 const workorders = loadCsv('workorders.csv');
+const crews      = loadCsv('crews.csv');
+const customers  = loadCsv('customers.csv');
 
 // â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const fmt   = (n) => n.toLocaleString('en-IN');
@@ -43,11 +45,22 @@ const cap   = (s) => s.charAt(0).toUpperCase() + s.slice(1);
 
 /** Classify a lat/lng into a city zone. */
 function toZone(lat, lng) {
-  if (lat >= 40.76) return 'North';
-  if (lat < 40.70)  return 'South';
-  if (lng > -74.00) return 'East';
-  if (lng < -74.02) return 'West';
-  return 'Central';
+  if (lat >= 40.55) return 'North Azerbaijan';
+  if (lat < 39.50)  return 'South Azerbaijan';
+  if (lng >= 50.00) return 'East Absheron';
+  if (lng < 48.00)  return 'West Azerbaijan';
+  return 'Central Baku';
+}
+
+/** Haversine distance in km between two lat/lng points. */
+function haversineKm(lat1, lng1, lat2, lng2) {
+  const R = 6371;
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLng = (lng2 - lng1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2
+          + Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180)
+          * Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
 /** Bucket fine-grained complaint categories into broader groups. */
@@ -469,6 +482,46 @@ latestPressure.filter(p => p.anomaly === true).forEach(p => {
 });
 if (!safetyAlerts.length) safetyAlerts.push({ id: ++sId, severity: 'info', message: 'All systems normal', time: 'now', source: 'System' });
 
+
+// emergencyResponse -- match active leaks to nearest available crew
+const emergencyResponse = activeLeaks
+  .filter(l => l.severity === 'critical' || l.severity === 'high')
+  .map(l => {
+    const crewDistances = crews.map(c => ({
+      crew_id: c.crew_id,
+      base_city: c.base_city,
+      status: c.status,
+      distance: round(haversineKm(l.latitude, l.longitude, c.latitude, c.longitude), 1),
+      eta: round(haversineKm(l.latitude, l.longitude, c.latitude, c.longitude) / 40 * 60, 0),
+    })).sort((a, b) => a.distance - b.distance);
+
+    const nearest = crewDistances[0];
+    const available = crewDistances.filter(c => c.status === 'available')[0] || null;
+
+    return {
+      incident_id: l.leak_id,
+      pipeline_id: l.pipeline_id,
+      severity: l.severity,
+      location: l.location,
+      latitude: l.latitude,
+      longitude: l.longitude,
+      detected_time: l.detected_time,
+      status: l.status,
+      estimated_flow_rate: l.estimated_flow_rate,
+      affected_customers: l.affected_customers,
+      nearest_crew: nearest ? { crew_id: nearest.crew_id, city: nearest.base_city, distance_km: nearest.distance, eta_min: nearest.eta, status: nearest.status } : null,
+      recommended_crew: available ? { crew_id: available.crew_id, city: available.base_city, distance_km: available.distance, eta_min: available.eta } : (nearest ? { crew_id: nearest.crew_id, city: nearest.base_city, distance_km: nearest.distance, eta_min: nearest.eta } : null),
+      all_crews: crewDistances.slice(0, 3),
+    };
+  });
+
+const emergencyKpis = [
+  { label: "Active Emergencies", value: String(emergencyResponse.length), change: emergencyResponse.filter(e => e.severity === 'critical').length + ' critical', trend: "up", icon: "siren" },
+  { label: "Avg Response ETA", value: emergencyResponse.length ? round(emergencyResponse.reduce((s, e) => s + (e.recommended_crew ? e.recommended_crew.eta_min : 0), 0) / emergencyResponse.length, 0) + ' min' : '0 min', change: "target < 15 min", trend: "neutral", icon: "clock" },
+  { label: "Available Crews", value: String(crews.filter(c => c.status === 'available').length), change: 'of ' + crews.length + ' total', trend: "neutral", icon: "truck" },
+  { label: "Customers at Risk", value: fmt(emergencyResponse.reduce((s, e) => s + e.affected_customers, 0)), change: emergencyResponse.length + ' incidents', trend: "up", icon: "users" },
+];
+
 // â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
 // CUSTOMERS  â† complaints.csv
 // â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
@@ -532,12 +585,53 @@ const workforceKpis = [
 const activeTasks = workorders.filter(w => w.status !== 'completed').map(w => ({
   id: w.workorder_id,
   task: cap(w.type),
-  crew: w.crew_id || 'â€”',
+  crew: w.crew_id || '–',
   location: w.location,
   priority: cap(w.priority),
   status: w.status === 'in_progress' ? 'In Progress' : w.status === 'assigned' ? 'Assigned' : 'Pending',
-  eta: w.estimated_resolution_time ? timeSince(w.estimated_resolution_time) : 'â€”',
+  eta: w.estimated_resolution_time ? timeSince(w.estimated_resolution_time) : '–',
+  latitude: w.latitude,
+  longitude: w.longitude,
+  city: w.city || '',
 }));
+
+// -- Workforce map data (all work orders with coordinates for heatmap/scatter) --
+const workOrderMapData = workorders.filter(w => w.latitude && w.longitude).map(w => ({
+  id: w.workorder_id,
+  location: [w.longitude, w.latitude],
+  taskType: cap(w.type),
+  crew: w.crew_id || '',
+  priority: cap(w.priority),
+  status: w.status === 'in_progress' ? 'In Progress' : w.status === 'assigned' ? 'Assigned' : w.status === 'completed' ? 'Completed' : 'Pending',
+  city: w.city || '',
+}));
+
+const crewVehicles = crews.map(c => ({
+  id: c.crew_id,
+  location: [c.longitude, c.latitude],
+  status: cap(c.status),
+  baseCity: c.base_city,
+}));
+
+// -- Workforce distribution summary --
+const woByCityMap = {};
+const woByPriorityMap = {};
+const woByStatusMap = {};
+const woByTypeMap = {};
+workorders.forEach(w => {
+  if (w.city) woByCityMap[w.city] = (woByCityMap[w.city] || 0) + 1;
+  const p = cap(w.priority); woByPriorityMap[p] = (woByPriorityMap[p] || 0) + 1;
+  const s = w.status === 'in_progress' ? 'In Progress' : w.status === 'assigned' ? 'Assigned' : w.status === 'completed' ? 'Completed' : 'Pending';
+  woByStatusMap[s] = (woByStatusMap[s] || 0) + 1;
+  const t = cap(w.type); woByTypeMap[t] = (woByTypeMap[t] || 0) + 1;
+});
+const workforceDistribution = {
+  total: workorders.length,
+  byCity: Object.entries(woByCityMap).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count),
+  byPriority: Object.entries(woByPriorityMap).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count),
+  byStatus: Object.entries(woByStatusMap).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count),
+  byType: Object.entries(woByTypeMap).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count),
+};
 
 // â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
 // ASSETS  â† assets.csv, workorders.csv
@@ -578,7 +672,235 @@ assets.forEach(a => { if (a.health_score < 80) failCounts[a.type] = (failCounts[
 const failureFrequency = Object.entries(failCounts)
   .sort((a, b) => b[1] - a[1])
   .map(([type, count]) => ({ type, count }));
+// ═══════════════════════════════════════════════
+// ASSET INTELLIGENCE  ← assets, workorders, meters,
+//                        pressure, leaks, complaints
+// ═══════════════════════════════════════════════
 
+// Demo "now" — based on latest timestamp across CSVs (workorders/pressure/leaks/complaints all peak at 2024-01-18)
+const demoNow = new Date('2024-01-18T12:00:00Z');
+
+// Type-based expected lifespan (years)
+const ASSET_LIFESPAN = {
+  'Pressure Regulator': 15, 'Flow Meter': 12, 'Compressor Station': 20,
+  'Pressure Valve': 15, 'Control System': 10, 'Gas Meter Hub': 12,
+  'Pressure Sensor': 10, 'Compressor Unit': 20, 'Flow Control Valve': 15,
+  'Monitoring Station': 15, 'Pipeline Segment': 25,
+};
+
+// Lookup maps for cross-domain correlation
+const assetById = Object.fromEntries(assets.map(a => [a.asset_id, a]));
+const woByAsset = {};
+workorders.forEach(w => {
+  if (!woByAsset[w.asset_id]) woByAsset[w.asset_id] = [];
+  woByAsset[w.asset_id].push(w);
+});
+const pressureByPipeline = {};
+pressure.forEach(p => { pressureByPipeline[p.pipeline_id] = p; });
+const leaksByPipeline = {};
+leaks.forEach(l => {
+  if (!leaksByPipeline[l.pipeline_id]) leaksByPipeline[l.pipeline_id] = [];
+  leaksByPipeline[l.pipeline_id].push(l);
+});
+const metersByLocation = {};
+meters.forEach(m => {
+  if (!metersByLocation[m.location]) metersByLocation[m.location] = [];
+  metersByLocation[m.location].push(m);
+});
+const complaintsByLocation = {};
+complaints.forEach(c => {
+  if (!complaintsByLocation[c.location]) complaintsByLocation[c.location] = [];
+  complaintsByLocation[c.location].push(c);
+});
+
+/** Compute composite risk score for an asset (0-100). */
+function computeAssetRisk(a) {
+  let s = 0;
+  // Health deficit
+  s += (100 - a.health_score) * 0.3;
+  // Failure risk field
+  s += ({ critical: 25, high: 18, medium: 10, low: 3 }[a.failure_risk] || 0);
+  // Overdue maintenance
+  const daysSinceDue = (demoNow - new Date(a.next_scheduled_maintenance)) / 864e5;
+  if (daysSinceDue > 0) s += Math.min(daysSinceDue * 0.15, 15);
+  // Work orders
+  const aws = woByAsset[a.asset_id] || [];
+  const openAws = aws.filter(w => w.status !== 'completed');
+  s += openAws.length * 5;
+  if (openAws.some(w => w.priority === 'critical')) s += 10;
+  // Pressure anomaly on pipeline
+  const pp = pressureByPipeline[a.pipeline_id];
+  if (pp && pp.anomaly === true) s += pp.status === 'critical' ? 12 : 6;
+  // Active leaks on pipeline
+  const pLeaks = (leaksByPipeline[a.pipeline_id] || []).filter(l => l.status !== 'resolved');
+  s += pLeaks.length * 4;
+  if (pLeaks.some(l => l.severity === 'critical')) s += 8;
+  // Meter comm failures at same location
+  const locM = (metersByLocation[a.location] || []).filter(m => m.communication_status !== 'online');
+  s += locM.length * 3;
+  return Math.min(Math.round(s), 100);
+}
+
+const assetIntel = assets.map(a => {
+  const rs = computeAssetRisk(a);
+  const nextM = new Date(a.next_scheduled_maintenance);
+  const daysTillMaint = Math.round((nextM - demoNow) / 864e5);
+  const overdue = daysTillMaint < 0;
+  const dueSoon7 = !overdue && daysTillMaint <= 7;
+  const dueSoon30 = !overdue && daysTillMaint <= 30;
+  const dueSoon90 = !overdue && daysTillMaint <= 90;
+  const lifespan = ASSET_LIFESPAN[a.type] || 15;
+  const age = 2024 - a.installation_year;
+  const eolYear = a.installation_year + lifespan;
+  const yearsToEol = eolYear - 2024;
+  const eolCandidate = yearsToEol <= 2;
+
+  // Reasons
+  const reasons = [];
+  if (a.failure_risk === 'critical') reasons.push('Critical failure risk');
+  if (a.failure_risk === 'high') reasons.push('High failure risk');
+  if (a.health_score < 60) reasons.push('Low health score');
+  if (overdue) reasons.push('Overdue maintenance');
+  const pp = pressureByPipeline[a.pipeline_id];
+  if (pp && pp.anomaly === true) reasons.push('Pipeline pressure anomaly');
+  const pLeaks = (leaksByPipeline[a.pipeline_id] || []).filter(l => l.status !== 'resolved');
+  if (pLeaks.length) reasons.push('Active leak on pipeline');
+  const locM = (metersByLocation[a.location] || []).filter(m => m.communication_status !== 'online');
+  if (locM.length) reasons.push('Meter comm issues at location');
+  const locC = (complaintsByLocation[a.location] || []).filter(c => c.status !== 'resolved');
+  if (locC.length) reasons.push(`${locC.length} open complaint(s) nearby`);
+
+  // Recommended action
+  let action = 'Monitor';
+  if (rs >= 70) action = 'Emergency inspection required';
+  else if (rs >= 50) action = 'Schedule priority maintenance';
+  else if (overdue) action = 'Overdue maintenance – schedule immediately';
+  else if (eolCandidate && yearsToEol <= 0) action = 'Plan replacement – end of life exceeded';
+  else if (eolCandidate) action = `Plan replacement within ${yearsToEol} year(s)`;
+  else if (dueSoon7) action = 'Maintenance due within 7 days';
+  else if (dueSoon30) action = 'Maintenance due within 30 days';
+
+  return {
+    asset_id: a.asset_id, type: a.type, installation_year: a.installation_year,
+    health_score: a.health_score, location: a.location, latitude: a.latitude,
+    longitude: a.longitude, last_maintenance: a.last_maintenance,
+    next_scheduled_maintenance: a.next_scheduled_maintenance,
+    failure_risk: a.failure_risk, pipeline_id: a.pipeline_id,
+    riskScore: rs, daysTillMaint, overdue, dueSoon7, dueSoon30, dueSoon90,
+    age, lifespan, eolYear, yearsToEol, eolCandidate, reasons, action,
+  };
+}).sort((a, b) => b.riskScore - a.riskScore);
+
+// Predictive failure candidates (risk >= 30)
+const predictiveFailures = assetIntel.filter(a => a.riskScore >= 30).map(a => {
+  const confidence = Math.min(50 + a.reasons.length * 10, 95);
+  const daysToFailure = a.riskScore >= 70 ? Math.round((100 - a.riskScore) * 1.5)
+    : a.riskScore >= 50 ? Math.round((100 - a.riskScore) * 3)
+    : Math.round((100 - a.riskScore) * 5);
+  const suggestedWO = a.riskScore >= 70 ? 'Emergency Repair'
+    : a.riskScore >= 50 ? 'Corrective Maintenance'
+    : a.overdue ? 'Scheduled Maintenance' : 'Preventive Inspection';
+  return {
+    asset_id: a.asset_id, type: a.type, location: a.location,
+    pipeline_id: a.pipeline_id, health_score: a.health_score,
+    riskScore: a.riskScore, confidence, daysToFailure, suggestedWO, reasons: a.reasons,
+  };
+});
+
+// Expiry / compliance (overdue, due-soon, or end-of-life candidates)
+const expiryItems = assetIntel
+  .filter(a => a.overdue || a.dueSoon90 || a.eolCandidate)
+  .map(a => ({
+    asset_id: a.asset_id, type: a.type, location: a.location,
+    pipeline_id: a.pipeline_id, health_score: a.health_score,
+    next_scheduled_maintenance: a.next_scheduled_maintenance,
+    daysTillMaint: a.daysTillMaint, overdue: a.overdue,
+    installation_year: a.installation_year, age: a.age,
+    lifespan: a.lifespan, eolYear: a.eolYear, yearsToEol: a.yearsToEol,
+    eolCandidate: a.eolCandidate,
+    status: a.overdue ? 'overdue' : a.dueSoon7 ? 'due-7d' : a.dueSoon30 ? 'due-30d' : a.dueSoon90 ? 'due-90d' : 'eol',
+  }))
+  .sort((a, b) => a.daysTillMaint - b.daysTillMaint);
+
+// Smart meter correlation
+const meterCorrelation = assets.map(a => {
+  const locMeters = metersByLocation[a.location] || [];
+  const problemMeters = locMeters.filter(m => m.communication_status !== 'online' || m.status !== 'active');
+  return {
+    asset_id: a.asset_id, type: a.type, location: a.location,
+    pipeline_id: a.pipeline_id, health_score: a.health_score,
+    failure_risk: a.failure_risk,
+    meters: locMeters.map(m => ({
+      meter_id: m.meter_id, status: m.status,
+      communication_status: m.communication_status,
+      last_reading: m.last_reading, meter_type: m.meter_type,
+    })),
+    totalMeters: locMeters.length, problemMeters: problemMeters.length,
+    hasIssues: problemMeters.length > 0,
+  };
+}).filter(c => c.totalMeters > 0);
+
+// Recommended actions (work-order-style)
+const recommendedActions = assetIntel
+  .filter(a => a.action !== 'Monitor')
+  .map(a => ({
+    asset_id: a.asset_id, type: a.type, location: a.location,
+    pipeline_id: a.pipeline_id, riskScore: a.riskScore, health_score: a.health_score,
+    priority: a.riskScore >= 70 ? 'critical' : a.riskScore >= 50 ? 'high' : a.overdue ? 'high' : 'medium',
+    action: a.action, reasons: a.reasons,
+    estimatedDowntime: a.riskScore >= 70 ? '4-8 hours' : a.riskScore >= 50 ? '2-4 hours' : '1-2 hours',
+    suggestedWO: a.riskScore >= 70 ? 'Emergency Repair'
+      : a.riskScore >= 50 ? 'Corrective Maintenance'
+      : a.overdue ? 'Scheduled Maintenance' : 'Preventive Inspection',
+  }));
+
+// Dynamic AI advisory
+const aiAdvisory = [];
+const critCount = assetIntel.filter(a => a.riskScore >= 70).length;
+const highCount = assetIntel.filter(a => a.riskScore >= 50 && a.riskScore < 70).length;
+const overdueAssets = assetIntel.filter(a => a.overdue);
+const eolAssets = assetIntel.filter(a => a.eolCandidate);
+const problemMeterAssets = meterCorrelation.filter(c => c.hasIssues);
+
+if (critCount > 0) {
+  const ids = assetIntel.filter(a => a.riskScore >= 70).map(a => a.asset_id).join(', ');
+  aiAdvisory.push({ type: 'warning', text: `${critCount} asset(s) at critical failure risk (${ids}). Immediate field inspection strongly recommended to prevent service disruption.` });
+}
+if (overdueAssets.length > 0) {
+  const worst = overdueAssets[0];
+  aiAdvisory.push({ type: 'warning', text: `${overdueAssets.length} asset(s) have overdue maintenance. ${worst.asset_id} (${worst.type}) is ${Math.abs(worst.daysTillMaint)} days past due — deferring further may raise failure probability 15-20%.` });
+}
+if (highCount > 0) {
+  aiAdvisory.push({ type: 'recommendation', text: `${highCount} asset(s) in the high-risk band (score 50-69). Scheduling corrective maintenance this week could reduce aggregate risk by ~30%.` });
+}
+if (eolAssets.length > 0) {
+  const names = eolAssets.map(a => `${a.asset_id} (${a.type}, installed ${a.installation_year})`).join('; ');
+  aiAdvisory.push({ type: 'recommendation', text: `End-of-life planning needed for ${eolAssets.length} asset(s): ${names}. Budget for replacements in the next capital cycle.` });
+}
+if (problemMeterAssets.length > 0) {
+  const totalBad = problemMeterAssets.reduce((s, c) => s + c.problemMeters, 0);
+  aiAdvisory.push({ type: 'trend', text: `${totalBad} smart meter(s) at ${problemMeterAssets.length} asset location(s) show communication issues. Correlation suggests infrastructure degradation — cross-reference with field readings.` });
+}
+{
+  const leakPipelines = [...new Set(leaks.filter(l => l.status !== 'resolved').map(l => l.pipeline_id))];
+  const affectedAssets = assetIntel.filter(a => leakPipelines.includes(a.pipeline_id));
+  if (affectedAssets.length > 0) {
+    aiAdvisory.push({ type: 'info', text: `${affectedAssets.length} asset(s) sit on pipelines with active leak events (${leakPipelines.join(', ')}). Monitor health scores for secondary degradation.` });
+  }
+}
+if (aiAdvisory.length === 0) {
+  aiAdvisory.push({ type: 'info', text: 'All assets operating within normal parameters. No critical actions required.' });
+}
+
+// Enhanced asset KPIs
+const assetIntelKpis = [
+  { label: "Total Assets", value: String(assets.length), change: `${[...new Set(assets.map(a => a.type))].length} types`, trend: "neutral", icon: "gitBranch" },
+  { label: "Critical Risk", value: String(critCount), change: `${critCount + highCount} elevated`, trend: critCount > 0 ? "up" : "neutral", icon: "shieldAlert" },
+  { label: "Overdue Maintenance", value: String(overdueAssets.length), change: `of ${assets.length} assets`, trend: overdueAssets.length > 0 ? "up" : "neutral", icon: "alertTriangle" },
+  { label: "Due ≤ 30 Days", value: String(assetIntel.filter(a => a.dueSoon30 && !a.overdue).length), change: `${assetIntel.filter(a => a.dueSoon7 && !a.overdue).length} within 7d`, trend: "up", icon: "clock" },
+  { label: "Predicted Failures", value: String(predictiveFailures.length), change: `${predictiveFailures.filter(f => f.riskScore >= 70).length} critical`, trend: predictiveFailures.length > 0 ? "up" : "neutral", icon: "activity" },
+  { label: "Impacted Meters", value: String(problemMeterAssets.reduce((s, c) => s + c.problemMeters, 0)), change: `${problemMeterAssets.length} locations`, trend: problemMeterAssets.length > 0 ? "up" : "neutral", icon: "radio" },
+];
 // â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
 // ALERTS CENTER  â† all CSVs aggregated
 // â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”â”
@@ -622,6 +944,39 @@ assets.filter(a => a.failure_risk === 'critical').forEach(a => {
     time: 'recent', source: 'Asset Monitor' });
 });
 
+
+// -- Customer List & Distribution Summary --
+const customerList = customers.map(c => ({
+  customer_id: c.customer_id,
+  name: c.name,
+  category: c.category,
+  district: c.district,
+  region: c.region,
+  latitude: c.latitude,
+  longitude: c.longitude,
+  meter_id: c.meter_id,
+  status: c.status,
+  connection_date: c.connection_date,
+  monthly_consumption: c.monthly_consumption,
+  last_bill_amount: c.last_bill_amount,
+  payment_status: c.payment_status,
+}));
+
+const byCategory = {};
+const byRegionMap = {};
+const byDistrictMap = {};
+customers.forEach(c => {
+  byCategory[c.category] = (byCategory[c.category] || 0) + 1;
+  byRegionMap[c.region] = (byRegionMap[c.region] || 0) + 1;
+  byDistrictMap[c.district] = (byDistrictMap[c.district] || 0) + 1;
+});
+const customerDistributionSummary = {
+  total: customers.length,
+  byCategory,
+  byRegion: Object.entries(byRegionMap).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count),
+  byDistrict: Object.entries(byDistrictMap).map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count),
+};
+
 // â”€â”€ Exports â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 module.exports = {
   kpiData, consumptionTrend, revenueVsConsumption, complaintsByArea,
@@ -633,9 +988,12 @@ module.exports = {
   topCustomersByConsumption, consumptionTrend,
   revenueKpis, areaWiseRevenue, consumptionVsBilled, tamperingAlerts,
   safetyKpis, gasPressureTrends, leakDetectionActivity: leakDetectionActivity,
-  safetyAlerts,
+  safetyAlerts, emergencyResponse, emergencyKpis,
   customerKpis, complaintTypes, complaintTrends, complaintHeatmap, recentComplaints,
-  workforceKpis, activeTasks,
+  customerList, customerDistributionSummary,
+  workforceKpis, activeTasks, workOrderMapData, crewVehicles, workforceDistribution,
   assetKpis, assetAgeDistribution, maintenanceHistory, failureFrequency,
+  assetIntelKpis, assetIntel, predictiveFailures, expiryItems,
+  meterCorrelation, recommendedActions, aiAdvisory,
   allAlerts,
 };

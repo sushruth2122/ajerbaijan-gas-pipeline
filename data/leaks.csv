@@ -1,16 +1,26 @@
 leak_id,pipeline_id,severity,location,latitude,longitude,detected_time,status,estimated_flow_rate,customer_calls,affected_customers,crew_dispatched
-LKS-001,PL-205,critical,Industrial Zone A,40.6892,-74.0445,2024-01-18T06:30:00Z,contained,45.2,8,23,true
-LKS-002,PL-189,high,Downtown District,40.7128,-74.0060,2024-01-18T08:15:00Z,in_progress,28.5,5,12,true
-LKS-003,PL-156,medium,Uptown Heights,40.7589,-73.9851,2024-01-17T22:45:00Z,patrol_only,12.3,2,5,false
-LKS-004,PL-234,critical,Factory Row,40.6956,-74.0789,2024-01-18T05:00:00Z,contained,52.8,12,34,true
-LKS-005,PL-178,low,South Residential,40.6989,-74.0198,2024-01-17T19:20:00Z,patrol_only,5.1,0,0,false
-LKS-006,PL-198,high,Harbor Front,40.7034,-74.0172,2024-01-18T09:30:00Z,in_progress,31.2,6,15,true
-LKS-007,PL-167,medium,Eastside Manor,40.7505,-73.9934,2024-01-17T16:00:00Z,patrol_only,15.7,1,3,false
-LKS-008,PL-212,critical,Westside Plaza,40.7549,-74.0087,2024-01-18T07:45:00Z,contained,48.3,9,27,true
-LKS-009,PL-145,low,Lakeside View,40.7256,-74.0234,2024-01-17T21:30:00Z,patrol_only,7.8,0,0,false
-LKS-010,PL-223,high,Central Business,40.7580,-73.9855,2024-01-18T10:00:00Z,in_progress,25.6,4,9,true
-LKS-011,PL-134,medium,Old Town,40.7201,-74.0023,2024-01-17T14:15:00Z,patrol_only,18.4,2,6,false
-LKS-012,PL-201,critical,North Industrial,40.7831,-73.9712,2024-01-18T04:15:00Z,contained,55.1,15,41,true
-LKS-013,PL-189,high,Downtown District,40.7128,-74.0060,2024-01-16T11:30:00Z,resolved,22.3,3,8,true
-LKS-014,PL-156,medium,Uptown Heights,40.7589,-73.9851,2024-01-15T20:00:00Z,resolved,14.2,1,4,true
-LKS-015,PL-178,low,South Residential,40.6989,-74.0198,2024-01-14T18:45:00Z,resolved,4.2,0,0,false
+LKS-001,PL-269,high,Lankaran District,38.7487,48.8538,2024-01-18T02:37:00Z,contained,45.0,13,44,true
+LKS-002,PL-334,medium,Nasimi District,40.3667,49.8427,2024-01-18T07:28:00Z,contained,12.1,4,6,true
+LKS-003,PL-126,low,Binagadi Pipeline,40.4499,49.8057,2024-01-18T10:06:00Z,in_progress,8.1,1,3,true
+LKS-004,PL-321,medium,Khirdalan Junction,40.4433,49.7733,2024-01-18T12:05:00Z,contained,15.1,4,1,true
+LKS-005,PL-191,low,Binagadi Pipeline,40.4504,49.8203,2024-01-18T09:05:00Z,contained,14.7,0,3,true
+LKS-006,PL-126,medium,Mardakan Zone,40.4954,50.1447,2024-01-18T21:17:00Z,in_progress,4.9,2,3,true
+LKS-007,PL-230,high,Mingachevir Station,40.7732,47.0358,2024-01-18T07:43:00Z,in_progress,24.6,13,45,true
+LKS-008,PL-230,low,Mardakan Zone,40.5114,50.1393,2024-01-18T18:56:00Z,in_progress,9.2,0,3,true
+LKS-009,PL-321,low,Khatai Zone,40.3967,49.8895,2024-01-18T07:47:00Z,patrol_only,10.3,2,2,false
+LKS-010,PL-126,low,Ganja Pipeline,40.6863,46.392,2024-01-18T16:31:00Z,patrol_only,9.2,1,2,false
+LKS-011,PL-347,medium,Absheron Hub,40.4491,49.8706,2024-01-18T12:24:00Z,patrol_only,16.3,3,1,false
+LKS-012,PL-230,low,Sumqayit Industrial,40.5907,49.6433,2024-01-18T08:49:00Z,patrol_only,2.2,0,8,false
+LKS-013,PL-139,critical,Yasamal District,40.382,49.8108,2024-01-15T16:58:00Z,patrol_only,44.2,14,26,false
+LKS-014,PL-295,medium,Mardakan Zone,40.508,50.1582,2024-01-14T19:20:00Z,patrol_only,5.6,2,2,false
+LKS-015,PL-126,low,Nasimi District,40.3687,49.8462,2024-01-15T18:05:00Z,patrol_only,16.5,1,0,false
+LKS-016,PL-347,medium,Baku Port Area,40.3617,49.8447,2024-01-16T16:55:00Z,resolved,15.8,1,0,false
+LKS-017,PL-139,medium,Khirdalan Junction,40.4641,49.7753,2024-01-17T16:28:00Z,resolved,14.4,2,0,false
+LKS-018,PL-113,medium,Khatai Zone,40.3864,49.8881,2024-01-14T07:04:00Z,resolved,6.1,0,0,false
+LKS-019,PL-269,high,Mardakan Zone,40.5009,50.1503,2024-01-15T15:51:00Z,resolved,30.7,3,0,false
+LKS-020,PL-230,high,Khatai Zone,40.3833,49.8958,2024-01-14T12:46:00Z,resolved,26.4,0,0,false
+LKS-021,PL-126,critical,Absheron Hub,40.4687,49.874,2024-01-17T07:55:00Z,resolved,28.6,2,0,false
+LKS-022,PL-295,critical,Sumqayit Industrial,40.5974,49.6405,2024-01-15T05:26:00Z,resolved,40.2,0,0,false
+LKS-023,PL-321,critical,Sumqayit Industrial,40.5831,49.6296,2024-01-16T13:44:00Z,resolved,24.6,3,0,false
+LKS-024,PL-334,high,Lankaran District,38.7632,48.8397,2024-01-16T01:03:00Z,resolved,58.2,0,0,false
+LKS-025,PL-191,critical,Sumqayit Industrial,40.5901,49.6405,2024-01-14T21:55:00Z,resolved,57.8,0,0,false
